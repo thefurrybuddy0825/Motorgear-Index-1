@@ -103,7 +103,6 @@
         },
         "0cf6d06d-69e0-4aa3-a1ab-c111ded8862e": {
           "type": "text",
-          "disabled": true,
           "settings": {
             "title": "Products",
             "novmenu_item": "Products",
