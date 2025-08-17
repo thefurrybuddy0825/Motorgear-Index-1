@@ -1118,7 +1118,7 @@
           "type": "item_policy",
           "settings": {
             "title_policy": "Free Shipping",
-            "desc_policy": "Delivering Value, Delivering Savings: Free Shipping on Every Order, Every Time",
+            "desc_policy": "Enjoy free shipping on all orders over $50 — because your pet’s happiness shouldn’t come with extra costs.",
             "mw": 360,
             "class": "mb-md-30"
           }
@@ -1127,7 +1127,7 @@
           "type": "item_policy",
           "settings": {
             "title_policy": "Return Policy",
-            "desc_policy": "Shop with Confidence: Our Customer-Centric Return Policy Ensures",
+            "desc_policy": "Hassle-free 30-day return policy. If your furry friend isn’t satisfied, we’ll make it right.",
             "mw": 360,
             "class": "mb-md-30"
           }
@@ -1136,7 +1136,7 @@
           "type": "item_policy",
           "settings": {
             "title_policy": "Payment Secured",
-            "desc_policy": "Trustworthy Payment Solutions: Robust Protocols to Ensure Your Transactions",
+            "desc_policy": "Checkout safely with encrypted transactions. We accept major credit cards, PayPal, and more.",
             "mw": 360,
             "class": "mb-xs-30"
           }
@@ -1145,7 +1145,7 @@
           "type": "item_policy",
           "settings": {
             "title_policy": "Money Back Guarantee",
-            "desc_policy": "We Stand by Our Promise: Our Money Back Guarantee Ensures Your Complete Delight",
+            "desc_policy": "Shop with confidence — 100% satisfaction or your money back, guaranteed.",
             "mw": 360,
             "class": ""
           }
