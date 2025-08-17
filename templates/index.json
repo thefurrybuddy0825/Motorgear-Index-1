@@ -715,6 +715,7 @@
       "blocks": {
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-1": {
           "type": "tabitem",
+          "name": "All",
           "settings": {
             "tab_title": "All",
             "collection_handle": "new-arrivals"
@@ -722,16 +723,26 @@
         },
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-2": {
           "type": "tabitem",
+          "name": "Dogs",
           "settings": {
             "tab_title": "Dogs",
-            "collection_handle": "new-arrivals"
+            "collection_handle": "new-arrivals-dogs"
+          }
+        },
+        "tabitem_JDELw9": {
+          "type": "tabitem",
+          "name": "Cats",
+          "settings": {
+            "tab_title": "Cats",
+            "collection_handle": "new-arrivals-cats"
           }
         },
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-3": {
           "type": "tabitem",
+          "name": "Small Pets",
           "settings": {
-            "tab_title": "Toys & Play",
-            "collection_handle": "new-arrivals"
+            "tab_title": "Small Pets",
+            "collection_handle": "new-arrivals-small-pets"
           }
         },
         "21510852-1727-4e0a-a49b-f6f77212f4c5": {
@@ -754,23 +765,16 @@
             "tab_title": "Food & Treats",
             "collection_handle": "new-arrivals"
           }
-        },
-        "tabitem_JDELw9": {
-          "type": "tabitem",
-          "settings": {
-            "tab_title": "Cats",
-            "collection_handle": "new-arrivals"
-          }
         }
       },
       "block_order": [
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-1",
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-2",
+        "tabitem_JDELw9",
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-3",
         "21510852-1727-4e0a-a49b-f6f77212f4c5",
         "ebaacd6e-ebf0-468f-a75e-6d19875a44b3",
-        "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3",
-        "tabitem_JDELw9"
+        "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3"
       ],
       "name": "New Arrivals Tabs",
       "settings": {
