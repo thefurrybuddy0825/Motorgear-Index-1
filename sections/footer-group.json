@@ -127,7 +127,8 @@
         "9490dcbe-51ad-44a0-9349-22b8725b47c6"
       ],
       "custom_css": [
-        ".footer-subtitle {margin-bottom: 20px !important;}"
+        ".footer-subtitle {margin-bottom: 30px !important;}",
+        ".mb-24 {margin-bottom: 10px !important;}"
       ],
       "settings": {
         "animate": true,
