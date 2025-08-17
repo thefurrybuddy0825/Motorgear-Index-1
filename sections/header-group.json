@@ -78,7 +78,7 @@
             "image_size3": "255x300",
             "novmenu_banner_link3": "",
             "class_bn3": "",
-            "collection_enable": false,
+            "collection_enable": true,
             "collection_xl": "col-xl-3",
             "collection_lg": "col-lg-3",
             "name_collec_1": "Best Sellers",
