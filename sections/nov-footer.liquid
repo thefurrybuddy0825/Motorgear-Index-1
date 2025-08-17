@@ -64,10 +64,10 @@
                           <a href="mailto:{{ bst.email }}">{{ bst.email }}</a>
                         </div>
                       {% endif %}
-                      {% if bst.business_time != blank %}
+                      {% if bst.business_hours != blank %}
                         <div class="footertop-item__contact d-flex align-items-end">
                           <div class="footertop-item__icon">{% render 'icon-clock' %}</div>
-                          <span>{{ bst.business_time }}</span>
+                          <span>{{ bst.business_hours }}</span>
                         </div>
                       {% endif %}
                     </div>
