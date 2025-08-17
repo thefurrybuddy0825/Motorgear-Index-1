@@ -59,9 +59,9 @@
         "aaf933ac-3238-4880-a8cd-d0b1bb16bf89": {
           "type": "block_menu",
           "settings": {
-            "block_title": "About us",
+            "block_title": "About",
             "h_t": false,
-            "menu_handle": "",
+            "menu_handle": "about",
             "block_class": "custom-f-w2",
             "grid_xxl": "col-xxl-2",
             "grid_xl": "col-xl-4",
