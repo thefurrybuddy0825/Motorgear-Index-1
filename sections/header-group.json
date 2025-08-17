@@ -232,7 +232,7 @@
         "bg_header_top": "#000000",
         "text_sp": "If you need support? Call us:",
         "color_text_sp": "#ffffff",
-        "text_call": "+ 909-478-2742",
+        "text_call": "",
         "color_text_call": "#ffa500",
         "stickymenu": true,
         "stickymenu_sm": true,
