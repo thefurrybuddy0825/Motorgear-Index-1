@@ -17,13 +17,13 @@
         "d0971828-5920-45a8-bdfc-06f185955162": {
           "type": "block_contact",
           "settings": {
-            "block_title": "",
-            "block_subtitle": "",
+            "block_title": "Welcome to The Furry Buddy™!",
+            "block_subtitle": "We’re passionate about bringing comfort, joy, and style to pets and their owners. From cozy beds to playful toys, our mission is simple: to make every furry friend feel loved and cared for. Thank you for choosing us to be part of your pet’s happy moments!",
             "max_width_logo": 206,
             "h_t": false,
-            "address": "2357 Gordon Street, CA",
-            "phone": "+ 909-478-2742",
-            "email": "motorgear@company.com",
+            "address": "Spokane, WA USA",
+            "phone": "Mon - Fri: 9 AM – 5 PM PST",
+            "email": "support@thefurrybuddy.com",
             "block_class": "custom-f-w1 mb-lg-40",
             "grid_xxl": "col-xxl-3",
             "grid_xl": "col-xl-4",
