@@ -81,7 +81,7 @@
             "collection_enable": true,
             "collection_xl": "col-xl-3",
             "collection_lg": "col-lg-3",
-            "name_collec_1": "Best Sellers",
+            "name_collec_1": "Best Sellers 1",
             "link_1": "/collections/best-sellers",
             "name_collec_2": "New Arrivals",
             "link_2": "/collections/new-arrivals",
@@ -91,13 +91,13 @@
             "link_4": "",
             "name_collec_5": "",
             "link_5": "",
-            "product_enable": true,
+            "product_enable": false,
             "product_xl": "col-xl-4",
             "product_lg": "col-lg-4",
             "title_product": "Featured Product",
-            "product_1": "38-51mm-double-air-outlet-exhaust-muffler",
-            "product_2": "alpinestars-bionic-action-jacket",
-            "product_3": "alpinestars-suzuki-v2-jacket",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
             "autoplay": true
           }
         }
