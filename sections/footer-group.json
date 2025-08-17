@@ -125,6 +125,9 @@
         "f5667244-e2c9-4448-a2fc-3fd5ba76801b",
         "9490dcbe-51ad-44a0-9349-22b8725b47c6"
       ],
+      "custom_css": [
+        ".footer-subtitle{margin-bottom: 20px;}"
+      ],
       "settings": {
         "animate": true,
         "container": "container",
