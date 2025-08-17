@@ -48,10 +48,9 @@
       "blocks": {
         "bfc3ee61-463a-4a44-a801-3b6c5cac6fd2": {
           "type": "text",
-          "disabled": true,
           "settings": {
-            "title": "Collection",
-            "novmenu_item": "Collection",
+            "title": "Shop",
+            "novmenu_item": "Shop",
             "desc": "",
             "fw": true,
             "novmenu_menu_enable": true,
