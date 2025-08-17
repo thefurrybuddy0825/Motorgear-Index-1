@@ -772,6 +772,7 @@
         "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3",
         "e03de2c8-509e-44a5-8a9b-76262ac9cb48"
       ],
+      "name": "New Arrivals Tabs",
       "settings": {
         "heading": "<p>new arrivals</p>",
         "heading_color": "#000000",
@@ -1028,7 +1029,7 @@
         "heading_color_left": "#000000",
         "sub_heading_left": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "sub_heading_color": "#8a8a8a",
-        "collection": "frontpage",
+        "collection": "best-sellers",
         "xxl": 3,
         "xl": 3,
         "lg": 2,
