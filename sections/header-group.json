@@ -82,7 +82,7 @@
             "collection_xl": "col-xl-3",
             "collection_lg": "col-lg-3",
             "name_collec_1": "Best Sellers",
-            "link_1": "shopify://collections/best-sellers",
+            "link_1": "/collections/best-sellers",
             "name_collec_2": "New Arrivals",
             "link_2": "shopify://collections/new-arrivals",
             "name_collec_3": "Top Trending",
