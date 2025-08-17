@@ -721,30 +721,6 @@
             "collection_handle": "new-arrivals"
           }
         },
-        "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-2": {
-          "type": "tabitem",
-          "name": "Dogs",
-          "settings": {
-            "tab_title": "Dogs",
-            "collection_handle": "new-arrivals-dogs"
-          }
-        },
-        "tabitem_JDELw9": {
-          "type": "tabitem",
-          "name": "Cats",
-          "settings": {
-            "tab_title": "Cats",
-            "collection_handle": "new-arrivals-cats"
-          }
-        },
-        "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-3": {
-          "type": "tabitem",
-          "name": "Small Pets",
-          "settings": {
-            "tab_title": "Small Pets",
-            "collection_handle": "new-arrivals-small-pets"
-          }
-        },
         "tabitem_7GEFpy": {
           "type": "tabitem",
           "name": "Beds & Mats",
@@ -788,9 +764,6 @@
       },
       "block_order": [
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-1",
-        "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-2",
-        "tabitem_JDELw9",
-        "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-3",
         "tabitem_7GEFpy",
         "21510852-1727-4e0a-a49b-f6f77212f4c5",
         "ebaacd6e-ebf0-468f-a75e-6d19875a44b3",
