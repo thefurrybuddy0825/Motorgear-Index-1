@@ -1,0 +1,352 @@
+{%- assign sst = section.settings -%}
+{%- assign collection_blog = blogs[sst.blog] -%}
+{%- style -%}
+  {%- assign bg_image = sst.background_image -%}
+  #shopify-section-{{ section.id }}
+  .distance {
+    padding-top: {{ sst.distance_top_xs }}px;
+    padding-bottom: {{ sst.distance_bottom_xs }}px;
+    {% if sst.background_color != blank or bg_image != blank %}
+      background: {{ sst.background_color }}
+      {% if bg_image != blank %} url("{{ bg_image | img_url: '' }}"){% endif %}
+    center;
+      background-size: cover;
+    {% endif %}
+  }
+  @media(min-width: 768px) {
+    #shopify-section-{{ section.id }} .distance {
+      padding-top: {{ sst.distance_top_md }}px;
+      padding-bottom: {{ sst.distance_bottom_md }}px;
+    }
+  }
+  @media(min-width: 1200px) {
+    #shopify-section-{{ section.id }} .distance {
+      padding-top: {{ sst.distance_top_xl }}px;
+      padding-bottom: {{ sst.distance_bottom_xl }}px;
+    }
+  }
+  #shopify-section-{{ section.id }}  .media-body .article__date{
+   color: {{ sst.color_date }};
+  }
+  #shopify-section-{{ section.id }} .media-body .article__excerpt {
+    color: {{ sst.color_description }};
+  }
+  #shopify-section-{{ section.id }} .media-body .read-more {
+    color: {{ sst.color_readmore }};
+  }
+  #shopify-section-{{ section.id }} .media-body .read-more svg {
+    fill: {{ sst.color_readmore }};
+  }
+{%- endstyle -%}
+
+<div
+  class="distance color-{{ sst.color_section }}{% if sst.class != blank %} {{ sst.class }}{% endif %}{% if sst.animate %} wow fadeInUp animated{% endif %}"
+  data-section-id="{{ section.id }}"
+  data-section-type="nov-slick">
+  <div class="{{ sst.container }}">
+    {% render 'heading-section' %}
+    <div class="container-content position-relative">
+      {% for article in collection_blog.articles limit: 4 %}
+         {% if forloop.first %}
+          <div class="row blog-item-frist mb-30">
+            <div class="content-image-blog col-lg-7">
+               <a href="{{ article.url }}" class="article__list-image-container position-relative d-block">
+                  {% if article.image != blank %}
+                  {%- assign imagealt = article.image.alt | default: 'image-blog' | strip_html | escape -%}
+                     <img class="img-fluid" src="{{ article.image | img_url: '857x398', crop: 'center' }}" alt="{{ article.title }}">
+                  {% else %}
+                  {% capture current %}{% cycle 1 %}{% endcapture %}
+                     {{ 'hero-apparel-' | append: current | placeholder_svg_tag: 'placeholder-svg' | replace: '<svg', '<svg style="width: 857px; height: 398px; border-radius: 10px;"' }}
+                  {% endif %}
+               </a>
+            </div>
+            <div class="media-body col-lg-5 mt-md-30">
+               <div class="content">
+                  {% if sst.blog_show_date %}
+                  <span class="article__date">
+                     {{ article.published_at | date: "%b" }} {{ article.published_at | date: "%d" }}, {{ article.published_at | date: "%Y" }}
+                  </span>
+                  {% endif %}
+                  <div class="article__title">
+                     <a href="{{ article.url }}">{{ article.title | truncate: 60 }}</a>
+                  </div>
+                  <div class="article__excerpt">
+                     {% if article.excerpt.size > 0 %}
+                     {{ article.excerpt | truncate: 230 }}
+                     {% else %}
+                     {{ article.content | strip_html | truncate: 230 }}
+                     {% endif %}
+                  </div>
+                  {% if sst.show_redmore %}
+                     <a href="{{ article.url }}" class="read-more">
+                     {{ 'sections.button.read_more' | t }}
+                     <svg
+                        width="13"
+                        height="8"
+                        viewBox="0 0 13 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.3545 4.35355C12.5498 4.15829 12.5498 3.84171 12.3545 3.64645L9.17255 0.464466C8.97729 0.269204 8.6607 0.269204 8.46544 0.464466C8.27018 0.659728 8.27018 0.976311 8.46544 1.17157L11.2939 4L8.46544 6.82843C8.27018 7.02369 8.27018 7.34027 8.46544 7.53553C8.6607 7.7308 8.97729 7.7308 9.17255 7.53553L12.3545 4.35355ZM0.000976562 4.5H12.001V3.5H0.000976562V4.5Z" />
+                     </svg>
+                     </a>
+                  {% endif %}
+               </div>
+            </div>
+          </div>
+         {% else %}
+            {% if forloop.index == 2 %}
+               <div class="row spacing-30">
+            {% endif %}
+               <div class="blog-item-end item sp-item col-lg-4 col-md-4">
+                  <div class="article--listing">
+                  <div class="content-image-blog">
+                     <a href="{{ article.url }}" class="article__list-image-container">
+                     {% if article.image != blank %}
+                        <img class="img-fluid" src="{{ article.image | img_url: '447x250', crop: 'center' }}" alt="{{ article.title }}">
+                     {% else %}
+                        {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+                        {{ 'hero-apparel-' | append: current | placeholder_svg_tag: 'placeholder-svg' | replace: '<svg', '<svg style="width: 477px;height: 250px;border-raidus: 10px"' }}
+                     {% endif %}
+                     </a>
+                  </div>
+                  <div class="media-body mb-sm-30">
+                     <div class="content">
+                        {% if sst.blog_show_date %}
+                           <span class="article__date">
+                              {{ article.published_at | date: "%b" }} {{ article.published_at | date: "%d" }}, {{ article.published_at | date: "%Y" }}
+                           </span>
+                        {% endif %}
+                        <div class="article__title line-clamp-1">
+                        <a href="{{ article.url }}">{{ article.title | truncate: 60 }}</a>
+                        </div>
+                        {% if sst.show_redmore %}
+                        <a href="{{ article.url }}" class="read-more">
+                           {{ 'sections.button.read_more' | t }}
+                           <svg
+                              width="13"
+                              height="8"
+                              viewBox="0 0 13 8"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12.3545 4.35355C12.5498 4.15829 12.5498 3.84171 12.3545 3.64645L9.17255 0.464466C8.97729 0.269204 8.6607 0.269204 8.46544 0.464466C8.27018 0.659728 8.27018 0.976311 8.46544 1.17157L11.2939 4L8.46544 6.82843C8.27018 7.02369 8.27018 7.34027 8.46544 7.53553C8.6607 7.7308 8.97729 7.7308 9.17255 7.53553L12.3545 4.35355ZM0.000976562 4.5H12.001V3.5H0.000976562V4.5Z" />
+                           </svg>
+                        </a>
+                        {% endif %}
+                     </div>
+                  </div>
+                  </div>
+               </div>
+            {% if forloop.last %}
+               </div>
+            {% endif %}
+         {% endif %}
+      {% else %}
+         <div class="row spacing-30">
+         {%- for i in (1..4) -%}
+            {%- capture current -%}{% cycle 1, 2, 3 %}{%- endcapture -%}
+            <div class="item sp-item  mb-30 {% if forloop.first %} col-lg-12 {% else %} col-lg-4 {% endif %}">
+               {{ 'hero-apparel-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+         {%- endfor -%}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Vinova Blog Special",
+    "class": "section-blog-special",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Vinova Blogs"
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading color",
+        "default": "#000000"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "subheading",
+        "label": "Sub heading",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod torus tempor incididunter."
+      },
+      {
+        "type": "color",
+        "id": "subheading_color",
+        "label": "Sub heading color",
+        "default": "#8a8a8a"
+      },
+      {
+        "type": "select",
+        "id": "heading_alignment",
+        "label": "Heading alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "blog",
+        "id": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "header",
+        "content": "Blog item option"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_redmore",
+        "label": "Show read more blog",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "color_date",
+        "label": "Color Date",
+        "default": "#B0B0B0"
+      },
+      {
+        "type": "color",
+        "id": "color_description",
+        "label": "Color Description",
+        "default": "#8A8A8A"
+      },
+      {
+        "type": "color",
+        "id": "color_readmore",
+        "label": "Color Redmore",
+        "default": "#222222"
+      },
+      {
+        "type": "header",
+        "content": "Design option"
+      },
+      {
+        "type": "checkbox",
+        "id": "animate",
+        "label": "Show animated",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "container",
+        "label": "Container",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Container"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container fluid"
+          },
+          {
+            "value": "container-full",
+            "label": "Container full width"
+          }
+        ]
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_section",
+        "label": "Color section",
+        "default": "background-1"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image",
+        "info": "1920 x 920px recommended"
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "header",
+        "content": "Spacing top (px)"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_xl",
+        "label": "Large laptop",
+        "default": 30,
+        "info": "Breakpoint 1200px"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_md",
+        "label": "Tablet",
+        "default": 30,
+        "info": "Breakpoint 768px"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_xs",
+        "label": "Mobile",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "Spacing bottom (px)"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_xl",
+        "label": "Large laptop",
+        "default": 30,
+        "info": "Breakpoint 1200px"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_md",
+        "label": "Tablet",
+        "default": 30,
+        "info": "Breakpoint 768px"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_xs",
+        "label": "Mobile",
+        "default": 30
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Blog Special",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,29 @@
+{% assign currentProduct = product %}
+{% if collection == null or collection.handle == 'all' %}
+    {% assign foundCollection = false %}
+    {% for item in product.collections %}
+        {% if foundCollection == false and item.handle != 'all' and item.all_products_count > 1 %}
+            {% assign foundCollection = true %}
+            {% assign collection = item %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% if collection and collection.products_count > 1 %}
+    <div class="ProductRelated mt-90">
+        <div class="title_section text-uppercase text-center mb-30 c_h"><span class="title">{{ 'products.product.related' | t }}</span></div>
+        <div class="grid grid--view-items">
+            <div class="slick-relatedproduct row spacing-30" data-autoplay="false" data-nav="true" data-dots="false" data-loop="true" data-items="4" data-lg="4" data-md="3" data-sm="2" data-xs="1">
+                {% for product in collection.products limit: section.settings.related_limit %}
+                    {% if sectionId == blank %}
+                        {% assign sectionId = section.id %}
+                    {% endif %}
+                    {% unless product.handle == currentProduct.handle %}
+                        <div class="item sp-item col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                            {% render 'product-grid-item-style-1', product: product, sectionId: sectionId %}
+                        </div>
+                    {% endunless %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

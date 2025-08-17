@@ -1,0 +1,18 @@
+<div id="Shopshare" class="modal fade">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" data-dismiss="modal"></div>
+      <div class="modal-body">
+        <div class="Shopshare_copy-title font-700 f_pr black mb-10">{{ 'general.copy.title' | t }}</div>
+        <div class="nov-copy d-flex">
+          <input type="text" value="{{ shop.url | append: product.url }}">
+          <div class="copy-btn btn" data-copy="{{ 'general.copy.copy' | t }}" data-copied="{{ 'general.copy.copied' | t }}">{{ 'general.copy.copy' | t }}</div>
+        </div>
+        <div class="Shopshare-title font-700 f_pr black mt-15 mb-10">{{ 'products.product.label_share' | t }}</div>
+        <div class="d-flex align-items-center">
+          {% render 'nov-social-svg' color: 'black' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<div class="block_social" social>
+  <ul class="list-inline mb-0">
+    {% if settings.social_facebook_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.5988 13.5H17.1155L18.1221 9.5H14.5988V7.5C14.5988 6.47 14.5988 5.5 16.6122 5.5H18.1221V2.14C17.794 2.097 16.5548 2 15.2461 2C12.513 2 10.5722 3.657 10.5722 6.7V9.5H7.55225V13.5H10.5722V22H14.5988V13.5Z" fill="{{ color }}"/>
+         </svg>
+          <span class="social-title">Facebook</span>
+        </a>
+      </li>
+    {% endif %}
+    {% if settings.social_instagram_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.9394 2.00123C14.674 1.99843 15.4086 2.00576 16.143 2.02323L16.3382 2.03023C16.5637 2.03823 16.7862 2.04823 17.055 2.06023C18.1261 2.11023 18.8569 2.27823 19.4981 2.52523C20.1625 2.77923 20.7222 3.12323 21.2819 3.67923C21.7937 4.17884 22.1898 4.78318 22.4426 5.45023C22.6913 6.08723 22.8604 6.81423 22.9107 7.87823C22.9228 8.14423 22.9329 8.36623 22.9409 8.59023L22.9469 8.78423C22.9648 9.51342 22.9726 10.2428 22.9701 10.9722L22.9711 11.7182V13.0282C22.9736 13.758 22.9659 14.4877 22.948 15.2172L22.9419 15.4112C22.9339 15.6352 22.9238 15.8562 22.9117 16.1232C22.8614 17.1872 22.6903 17.9132 22.4426 18.5502C22.1906 19.218 21.7944 19.8228 21.2819 20.3222C20.7786 20.8306 20.1699 21.224 19.4981 21.4752C18.8569 21.7222 18.1261 21.8902 17.055 21.9402C16.7862 21.9522 16.5637 21.9622 16.3382 21.9702L16.143 21.9762C15.4086 21.994 14.674 22.0017 13.9394 21.9992L13.1884 22.0002H11.8707C11.1361 22.0027 10.4015 21.995 9.66714 21.9772L9.47185 21.9712C9.23288 21.9626 8.99396 21.9526 8.75511 21.9412C7.68403 21.8912 6.95319 21.7212 6.31095 21.4752C5.63919 21.2246 5.03072 20.8311 4.52816 20.3222C4.01582 19.8225 3.61937 19.2178 3.36648 18.5502C3.11783 17.9132 2.94872 17.1872 2.89838 16.1232C2.88717 15.8859 2.8771 15.6486 2.86818 15.4112L2.86315 15.2172C2.84459 14.4877 2.8362 13.758 2.83798 13.0282V10.9722C2.83517 10.2428 2.84256 9.51343 2.86013 8.78423L2.86718 8.59023C2.87523 8.36623 2.8853 8.14423 2.89738 7.87823C2.94771 6.81323 3.11683 6.08823 3.36547 5.45023C3.61852 4.78285 4.01573 4.17868 4.52917 3.68023C5.03138 3.17098 5.63947 2.7768 6.31095 2.52523C6.95319 2.27823 7.68302 2.11023 8.75511 2.06023L9.47185 2.03023L9.66714 2.02523C10.4012 2.0068 11.1354 1.99847 11.8697 2.00023L13.9394 2.00123ZM12.9045 7.00123C12.2376 6.99186 11.5755 7.11425 10.9566 7.3613C10.3378 7.60834 9.7745 7.97511 9.29955 8.44029C8.82461 8.90546 8.44747 9.45977 8.19006 10.071C7.93264 10.6822 7.80008 11.3382 7.80008 12.0007C7.80008 12.6633 7.93264 13.3192 8.19006 13.9305C8.44747 14.5417 8.82461 15.096 9.29955 15.5612C9.7745 16.0264 10.3378 16.3931 10.9566 16.6402C11.5755 16.8872 12.2376 17.0096 12.9045 17.0002C14.2395 17.0002 15.5197 16.4734 16.4636 15.5358C17.4075 14.5981 17.9378 13.3263 17.9378 12.0002C17.9378 10.6741 17.4075 9.40238 16.4636 8.4647C15.5197 7.52701 14.2395 7.00123 12.9045 7.00123ZM12.9045 9.00123C13.3057 8.99389 13.7043 9.06603 14.0771 9.21344C14.4499 9.36085 14.7893 9.58057 15.0757 9.85978C15.362 10.139 15.5895 10.4721 15.7448 10.8396C15.9001 11.2071 15.9801 11.6016 15.9801 12.0002C15.9802 12.3988 15.9003 12.7934 15.7452 13.1609C15.59 13.5285 15.3626 13.8617 15.0764 14.141C14.7902 14.4203 14.4508 14.6401 14.078 14.7876C13.7053 14.9352 13.3067 15.0074 12.9056 15.0002C12.1046 15.0002 11.3365 14.6842 10.7701 14.1216C10.2038 13.5589 9.88558 12.7959 9.88558 12.0002C9.88558 11.2046 10.2038 10.4415 10.7701 9.87891C11.3365 9.3163 12.1046 9.00023 12.9056 9.00023L12.9045 9.00123ZM18.1895 5.50123C17.8647 5.51414 17.5576 5.65138 17.3324 5.8842C17.1073 6.11702 16.9815 6.42736 16.9815 6.75023C16.9815 7.0731 17.1073 7.38344 17.3324 7.61626C17.5576 7.84908 17.8647 7.98632 18.1895 7.99923C18.5232 7.99923 18.8433 7.86753 19.0793 7.63311C19.3152 7.39869 19.4478 7.08075 19.4478 6.74923C19.4478 6.41771 19.3152 6.09977 19.0793 5.86535C18.8433 5.63093 18.5232 5.49923 18.1895 5.49923V5.50123Z" fill="{{ color }}"/>
+            </svg>
+
+          <span class="social-title">Instagram</span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% if settings.social_twitter_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.3394 2.25H21.6621L14.403 10.51L22.9428 21.75H16.2552L11.018 14.933L5.02552 21.75H1.70081L9.46516 12.915L1.27393 2.25H8.12925L12.8632 8.481L18.3374 2.25H18.3394ZM17.1733 19.77H19.0144L7.12983 4.126H5.15409L17.1733 19.77Z" fill="{{ color }}"/>
+         </svg>
+          <span class="social-title">Twitter</span>
+        </a>
+      </li>
+    {% endif %}
+    {% if settings.social_pinterest_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.56415 21.54C10.5305 21.83 11.507 22 12.5439 22C15.2137 22 17.7741 20.9464 19.662 19.0711C21.5498 17.1957 22.6104 14.6522 22.6104 12C22.6104 10.6868 22.35 9.38642 21.8441 8.17317C21.3383 6.95991 20.5968 5.85752 19.662 4.92893C18.7272 4.00035 17.6175 3.26375 16.3962 2.7612C15.1748 2.25866 13.8658 2 12.5439 2C11.2219 2 9.91288 2.25866 8.69155 2.7612C7.47022 3.26375 6.36049 4.00035 5.42572 4.92893C3.53788 6.8043 2.47729 9.34784 2.47729 12C2.47729 16.25 5.16507 19.9 8.96016 21.34C8.86956 20.56 8.77896 19.27 8.96016 18.38L10.1178 13.44C10.1178 13.44 9.82588 12.86 9.82588 11.94C9.82588 10.56 10.6916 9.53 11.6781 9.53C12.5439 9.53 12.9465 10.16 12.9465 10.97C12.9465 11.83 12.3727 13.06 12.0808 14.24C11.9097 15.22 12.6043 16.08 13.6109 16.08C15.4028 16.08 16.7919 14.18 16.7919 11.5C16.7919 9.1 15.0605 7.46 12.5741 7.46C9.73528 7.46 8.06424 9.56 8.06424 11.77C8.06424 12.63 8.3461 13.5 8.80916 14.07C8.89976 14.13 8.89976 14.21 8.86956 14.36L8.57763 15.45C8.57763 15.62 8.4669 15.68 8.29577 15.56C7.00725 15 6.26232 13.18 6.26232 11.71C6.26232 8.55 8.51723 5.68 12.866 5.68C16.3289 5.68 19.0267 8.15 19.0267 11.43C19.0267 14.87 16.8825 17.63 13.8122 17.63C12.8358 17.63 11.8795 17.11 11.5372 16.5L10.8627 18.87C10.6312 19.73 9.99702 20.88 9.56415 21.57V21.54Z" fill="{{ color }}"/>
+         </svg>
+          <span class="social-title">Pinterest</span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% if settings.social_youtube_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+          <i class="fa fa-youtube-play" aria-hidden="true"></i>
+          <span class="social-title">YouTube</span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% if settings.social_dribbble_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_dribbble_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Dribbble' }}">
+          <i class="fa fa-dribbble" aria-hidden="true"></i>
+          <span class="social-title">Dribbble</span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% if settings.social_tumblr_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: '' }}">
+          <i class="fa fa-tumblr" aria-hidden="true"></i>
+          <span class="social-title">Tumblr</span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% if settings.social_linkedin_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_linkedin_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: '' }}">
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+          <span class="social-title">Linkedin</span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% if settings.social_google_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_google_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: '' }}">
+          <i class="fa fa-google-plus" aria-hidden="true"></i>
+          <span class="social-title">Google</span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% if settings.social_snapchat_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+          <i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
+          <span class="social-title">Snapchat</span>
+        </a>
+      </li>
+    {% endif %}
+    {% if settings.social_vimeo_link != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+          <i class="fa fa-vimeo" aria-hidden="true"></i>
+          <span class="social-title">Vimeo</span>
+        </a>
+      </li>
+    {% endif %}
+    {% if settings.social_tiktok != blank %}
+      <li class="list-inline-item">
+        <a href="{{ settings.social_tiktok | escape }}https://icons8.com/icons/set/twitter" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tiktok' }}">
+          <i class="rbb-icon-social-tiktok-5"></i>
+          <span class="social-title">Tiktok</span>
+        </a>
+      </li>
+
+    {% endif %}
+  </ul>
+</div>

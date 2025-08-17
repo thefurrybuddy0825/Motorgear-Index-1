@@ -1,0 +1,1665 @@
+{%- liquid
+  assign sst = section.settings
+  if settings.lang_iso_rtl != blank
+    assign list_iso_rtl = settings.lang_iso_rtl | downcase
+    if list_iso_rtl contains request.locale.iso_code
+      assign iso_rtl = true
+    else
+      assign iso_rtl = false
+    endif
+  endif
+-%}
+{%- style -%}
+
+  @media(min-width: 768px) {
+    .site-nav--btn {
+      color: var(--color-icons);
+    }
+    .site-header__logo {
+      max-width: {{ sst.w_logo_md }}px;
+    }
+  }
+  @media(min-width: 992px) {
+    .site-header__logo {
+      max-width: {{ sst.w_logo_lg }}px;
+    }
+  }
+  @media(min-width: 1200px) {
+    .site-header__logo {
+      max-width: {{ sst.w_logo }}px;
+    }
+  }
+  .header-top {
+    {% if section.settings.bg_header_top != blank %}
+      background-color: {{ section.settings.bg_header_top }};
+    {% endif %}
+  }
+  .header-top .header-cu-lang .dropdown > button,
+  .header-top .header-cu-lang .dropdown .current-currency,
+  .header-top .header-account-text .title-account {
+    color: {{ section.settings.color_text_sp }};
+  }
+
+{%- endstyle %}
+<header
+  class="site-header{% if sst.stickymenu %} sticky-header{% endif %}"
+  data-section-id="{{ section.id }}"
+  data-section-type="nov-slick">
+  <div class="header-top d-none d-md-block position-relative">
+    <div class="container">
+      <div class="row">
+        <div class="site-header_top_left d-flex align-items-center justify-content-start col-6">
+          <span style="color: {{ section.settings.color_text_sp }}">{{ section.settings.text_sp }}</span>
+          <span class="text-call" style="color: {{ section.settings.color_text_call }}">{{ section.settings.text_call }}</span>
+        </div>
+        <div class="d-flex align-items-center flex-grow-1 justify-content-end site-header_top_right col-6">
+          <div class="header-account d-flex align-items-center position-relative">
+            <div class="header-group-icon d-flex align-items-center" nov-btn-act
+                data-toggle="header_settings"
+                overlay>
+              <div
+                  class="header-icon"
+                  nov-btn-act
+                  data-toggle="header_settings"
+                  overlay>
+                  {% if sst.account_svg != blank %}
+                    {{ sst.account_svg }}
+                  {% else %}
+                    <i class="{{ sst.account_icon }} position-relative"></i>
+                  {% endif %}
+              </div>
+
+              <div class="header-account-text">
+                {% if customer %}
+                  <div class="title-account d-flex flex-column">
+                    <span class="font-700 welcome">{{ 'customer.welcome' | t }}</span>
+                    <span class="account-name">{{ customer.name }}</span>
+                  </div>
+                {% else %}
+                  <div class="title-account">
+                    <span class="account-sign">{{ 'customer.account.sign_in_regiter' | t }}</span>
+                  </div>
+                {% endif %}
+                </div>
+            </div>
+          </div>
+          <div class="header-cu-lang d-flex align-items-center">
+            {%- if settings.show_language and localization.available_languages.size > 1 -%}
+              <div class="header-language d-none d-md-block">
+              {% include 'nov-block-language' , id: 'header-language' color: "#fff" %}
+              </div>
+            {%- endif -%}
+            {% if settings.show_multiple_currencies %}
+              <div class="header-currency">
+                {% include 'nov-block-currency', type: 'dropdown', color: "#fff" %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-center d-none d-md-block {% if request.page_type == 'index' %}color-{{ sst.color_header }}{% else %}color-{{ sst.color_header_inner }}{% endif %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 d-flex align-items-center">
+          <div class="site-nav--btn d-xl-none hover:c_df">
+            <i class="rbb-icon-menu-7"></i>
+          </div>
+          <div class="contentsticky_logo text-center">
+            {% if sst.logo %}
+              <a
+                href="{{ routes.root_url }}"
+                class="site-header__logo d-block"
+                style="max-width: {{ sst.w_logo }}px">
+                {%- assign logoalt = sst.logo.alt | default: shop.name | strip_html | escape -%}
+                {{ sst.logo | image_url: width: 600 | image_tag: loading: 'lazy', class: 'img-fluid', alt: logoalt, widths: '300 400 600 800'
+                }}
+              </a>
+            {% else %}
+              <div class="h2 site-header__logo d-inline-block mb-0">
+                <a
+                  class="site-header__logo-link"
+                  href="/"
+                  itemprop="url">{{ shop.name }}</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-xl-6 align-items-center justify-content-center d-none d-xl-flex">
+          <div class="contentsticky_menu col-md-12 text-center d-none d-xl-block">
+            <nav id="AccessibleNav">{% render 'site-nav' %}</nav>
+          </div>
+        </div>
+        <div class="header-group-item col-xl-3 col-md-9 d-flex align-items-center justify-content-end">
+	    <div class="site-header__search d-flex align-items-center justify-content-end">
+	      <div class="search__btn-overlay pointer d-flex" nov-btn-act data-toggle="search_canvas" overlay>
+	        {% render 'icon-search', color: "white" %}
+	      </div>
+	    </div>
+          {% if settings.wishlist_enable %}
+            <div class="contentsticky_wishlist header--wishlist">
+              <a href="{{ settings.link_page_wishlist }}" class="position-relative text-center">
+                <span
+                  class="header-icon"
+                  rel="nofollow"
+                  title="{{ 'layout.customer.wishlists' | t }}">
+                  {% if sst.wishlist_svg != blank %}
+                    {{ sst.wishlist_svg }}
+                  {% else %}
+                    <i class="{{ sst.wishlist }} position-relative"></i>
+                  {% endif %}
+                  <span class="WishlistCount position-absolute text-center rounded-circle">0</span>
+                </span>
+                <span class="text-wishlist">
+                  {{ 'layout.customer.wishlists' | t }}
+                </span>
+              </a>
+            </div>
+          {% endif %}
+          <div class="contentsticky_cart cart_canvas">
+            <div id="cart_block">
+              <div class="header-cart d-flex justify-content-center">
+                <div class="site-header__cart text-center">
+                  <span class="site-header__cart-count" title="{{ 'layout.cart.title_cart' | t }}">
+                    <span id="CartCount">{{ cart.item_count }}</span>
+                  </span>
+                  <div class="site-header__cart-icon header-icon">
+                    {% if sst.cart_svg != blank %}
+                      {{ sst.cart_svg }}
+                    {% else %}
+                      <i class="rbb-icon-shopping-{{ sst.cart_type }}-{{ sst.cart }} position-relative"></i>
+                    {% endif %}
+                  </div>
+                  <span class="text-cart">
+                    {{ 'layout.cart.title_cart' | t }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-mobile d-md-none color-{{ sst.color_header_sm }}{% if sst.stickymenu_sm == true %} sticky-header-mobile{% endif %}">
+    <div class="header-mobile-content">
+      <div class="row align-items-center h-100 justify-content-between">
+        <div class="d-flex align-items-center">
+          <div id="show-megamenu" class="item-mobile-top">
+            <div class="icon-directional position-absolute"></div>
+          </div>
+          <div class="mobile-btn_search item-mobile-top">
+            {% render 'icon-search' %}
+            <i class="zmdi zmdi-close"></i>
+          </div>
+          <div id="mobile_search">
+            {% render 'nov-formsearch-inline' %}
+          </div>
+        </div>
+        <div class="mobile_logo  text-center">
+          {% if sst.logo_mobile %}
+            <a href="/" class="site-header__logo-image img-fluid d-inline-block">
+              {%- assign image_size = sst.wm_logo | append: 'x' -%}
+              <img
+                srcset="{{ sst.logo_mobile | img_url: image_size }} 1x, {{ sst.logo_mobile | img_url: image_size, scale: 2 }} 2x"
+                src="{{ sst.logo_mobile | img_url: width: sst.w_logo | append: 'x' }}"
+                loading="lazy"
+                width="{{ sst.logo_mobile.width }}"
+                height="{{ sst.logo_mobile.height }}"
+                alt="{{ sst.logo_mobile.alt | default: shop.name | escape }}"
+                style="height: auto; max-width: {{ sst.wm_logo }}px;">
+            </a>
+          {% else %}
+            <a
+              class="site-header__logo-link"
+              href="/"
+              itemprop="url">{{ shop.name }}</a>
+          {% endif %}
+        </div>
+        <div class="mobile_cart d-flex justify-content-end">
+          <div class="cart_canvas">
+            <div class="header-cart d-flex justify-content-center">
+              <div class="site-header__cart d-flex justify-content-center align-items-center position-relative">
+                <span class="cart-count position-absolute" title="{{ 'layout.cart.title_cart' | t }}">
+                  <span id="CartCount">{{ cart.item_count }}</span>
+                </span>
+                <div class="site-header__cart-icon">
+                  <i class="rbb-icon-shopping-bag-6"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% render 'nov-search-canvas' %}
+{% if sst.stickymenu == true %}
+  <div id="header-sticky" class="d-none d-md-block color-{{ sst.color_header_sticky }}">
+    <div class="{{ sst.container }}">
+      <div class="bl_content row align-items-center">
+        <div class="col-md-3">
+          <div class="contentstickynew_logo"></div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+          <div class="contentstickynew_menu d-none d-xl-block"></div>
+        </div>
+        <div class="col-md-3">
+          <div class="header-group-item d-flex align-items-center justify-content-end">
+            {% if settings.wishlist_enable %}
+              <div class="contentstickynew_wishlist"></div>
+            {% endif %}
+            <div class="contentstickynew_cart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<div class="d-none">
+  <nav id="AccessibleNavMobile">{% render 'site-nav-mobile' %}</nav>
+</div>
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Header logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "number",
+        "id": "w_logo",
+        "label": "Width logo large laptop (px)",
+        "default": 206,
+        "info": "Breakpoint 1200px"
+      },
+      {
+        "type": "number",
+        "id": "w_logo_lg",
+        "label": "Width logo laptop (px)",
+        "default": 150,
+        "info": "Breakpoint 992px"
+      },
+      {
+        "type": "number",
+        "id": "w_logo_md",
+        "label": "Width logo tablet (px)",
+        "default": 150,
+        "info": "Breakpoint 768px"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_mobile",
+        "label": "Logo mobile"
+      },
+      {
+        "type": "number",
+        "id": "wm_logo",
+        "label": "Width logo mobile (px)",
+        "default": 100
+      },
+      {
+        "type": "header",
+        "content": "Header style"
+      },
+      {
+        "type": "select",
+        "id": "container",
+        "label": "Container",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Container"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container fluid"
+          },
+          {
+            "value": "container-full",
+            "label": "Container full width"
+          }
+        ]
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_header",
+        "label": "Color header",
+        "default": "background-1"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_header_inner",
+        "label": "Color header page inner",
+        "default": "background-1"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_header_sm",
+        "label": "Color header mobile",
+        "default": "background-1"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_header_sticky",
+        "label": "Color header sticky",
+        "default": "background-1"
+      },
+      {
+        "type": "header",
+        "content": "Header Top"
+      },
+      {
+        "type": "color",
+        "id": "bg_header_top",
+        "label": "Background header top",
+        "default": "#1E1E1E"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "text_sp",
+        "label": "Content Text Phone",
+        "default": "If you need support? Call us:"
+      },
+      {
+        "type": "color",
+        "id": "color_text_sp",
+        "label": "Color Text SP",
+        "default": "#ffffff"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "text_call",
+        "label": "Content Text SP",
+        "default": "+ 909-478-2742"
+      },
+      {
+        "type": "color",
+        "id": "color_text_call",
+        "label": "Color Text Call",
+        "default": "#ED1D24"
+      },
+      {
+        "type": "header",
+        "content": "Header sticky"
+      },
+      {
+        "type": "checkbox",
+        "id": "stickymenu",
+        "label": "Enable"
+      },
+      {
+        "type": "header",
+        "content": "Header mobile"
+      },
+      {
+        "type": "checkbox",
+        "id": "stickymenu_sm",
+        "label": "Enable sticky header",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Choose Account icon"
+      },
+      {
+        "type": "select",
+        "id": "account_icon",
+        "label": "Account icon",
+        "default": "rbb-icon-human-user-5",
+        "options": [
+          {
+            "value": "rbb-icon-human-user-2",
+            "label": "Canvas 1"
+          },
+          {
+            "value": "rbb-icon-human-user-3",
+            "label": "Canvas 2"
+          },
+          {
+            "value": "rbb-icon-human-user-5",
+            "label": "Canvas 3"
+          },
+          {
+            "value": "rbb-icon-human-user-7",
+            "label": "Canvas 4"
+          },
+          {
+            "value": "rbb-icon-human-user-8",
+            "label": "Canvas 5"
+          },
+          {
+            "value": "rbb-icon-human-user-9",
+            "label": "Canvas 6"
+          },
+          {
+            "value": "rbb-icon-human-user-10",
+            "label": "Canvas 7"
+          },
+          {
+            "value": "rbb-icon-human-user-11",
+            "label": "Canvas 8"
+          }
+        ]
+      },
+      {
+        "type": "html",
+        "id": "account_svg",
+        "label": "Account icon svg",
+        "info": "Icon svg replaces icon font where possible."
+      },
+      {
+        "type": "header",
+        "content": "Choose wishlist icon"
+      },
+      {
+        "type": "select",
+        "id": "wishlist",
+        "label": "Wishlist icon",
+        "default": "rbb-icon-wishlist-10",
+        "options": [
+          {
+            "value": "rbb-icon-wishlist-7",
+            "label": "Wishlist 1"
+          },
+          {
+            "value": "rbb-icon-wishlist-8",
+            "label": "Wishlist 2"
+          },
+          {
+            "value": "rbb-icon-wishlist-9",
+            "label": "Wishlist 3"
+          },
+          {
+            "value": "rbb-icon-wishlist-10",
+            "label": "Wishlist 4"
+          },
+          {
+            "value": "rbb-icon-wishlist-14",
+            "label": "Wishlist 5"
+          },
+          {
+            "value": "rbb-icon-wishlist-16",
+            "label": "Wishlist 6"
+          },
+          {
+            "value": "rbb-icon-wishlist-17",
+            "label": "Wishlist 7"
+          }
+        ]
+      },
+      {
+        "type": "html",
+        "id": "wishlist_svg",
+        "label": "Wishlist icon svg",
+        "info": "Icon svg replaces icon font where possible."
+      },
+      {
+        "type": "header",
+        "content": "Choose cart icon"
+      },
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart icon type",
+        "default": "cart",
+        "options": [
+          {
+            "value": "cart",
+            "label": "Cart"
+          },
+          {
+            "value": "bag",
+            "label": "Bag"
+          },
+          {
+            "value": "basket",
+            "label": "Basket"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "cart",
+        "label": "Cart icon",
+        "default": "6",
+        "options": [
+          {
+            "value": "1",
+            "label": "Cart 1"
+          },
+          {
+            "value": "2",
+            "label": "Cart 2"
+          },
+          {
+            "value": "3",
+            "label": "Cart 3"
+          },
+          {
+            "value": "4",
+            "label": "Cart 4"
+          },
+          {
+            "value": "5",
+            "label": "Cart 5"
+          },
+          {
+            "value": "6",
+            "label": "Cart 6"
+          },
+          {
+            "value": "7",
+            "label": "Cart 7"
+          },
+          {
+            "value": "8",
+            "label": "Cart 8"
+          },
+          {
+            "value": "9",
+            "label": "Cart 9"
+          },
+          {
+            "value": "10",
+            "label": "Cart 10"
+          }
+        ]
+      },
+      {
+        "type": "html",
+        "id": "cart_svg",
+        "label": "Cart icon svg",
+        "info": "Icon svg replaces icon font where possible."
+      },
+      {
+        "type": "header",
+        "content": "Header menu"
+      },
+      {
+        "type": "checkbox",
+        "id": "novmenu_enable",
+        "label": "Enable megamenu",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_icons",
+        "label": "Enable icon",
+        "default": true
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Megamenu Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "[Instructions for creating mega menus](https://shopifymate.com/documentation/guide/main-menu.html)"
+          },
+          {
+            "type": "text",
+            "id": "novmenu_item",
+            "label": "Menu item name",
+            "info": "Menu item of main-menu. Menu item has dropdown megamenu."
+          },
+          {
+            "type": "text",
+            "id": "desc",
+            "label": "Menu item description"
+          },
+          {
+            "type": "checkbox",
+            "id": "fw",
+            "label": "Full width"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon_menu",
+            "label": "Icon menu"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_bg",
+            "label": "Background image for block"
+          },
+          {
+            "type": "checkbox",
+            "id": "novmenu_menu_enable",
+            "label": "Enable navigation"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_title",
+            "label": "Show title",
+            "default": false
+          },
+          {
+            "type": "select",
+            "id": "novmenu_xl",
+            "label": "Width on megamenu large laptop 1200px ↑",
+            "default": "col-xl-3",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-xl-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "novmenu_lg",
+            "label": "Width on megamenu laptop 992px ↑",
+            "default": "col-lg-3",
+            "options": [
+              {
+                "value": "col-lg-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-lg-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "submenu_xl",
+            "label": "Width fisrt children menu on megamenu large laptop 1200px ↑",
+            "default": "col-xl-3",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-xl-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "submenu_lg",
+            "label": "Width fisrt children menu on megamenu laptop 992px ↑",
+            "default": "col-lg-3",
+            "options": [
+              {
+                "value": "col-lg-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-lg-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Block Banner"
+          },
+          {
+            "type": "number",
+            "id": "banner_br",
+            "label": "Border radius (px)",
+            "default": 5
+          },
+          {
+            "type": "header",
+            "content": "Block Banner 1"
+          },
+          {
+            "type": "checkbox",
+            "id": "novmenu_banner_enable1",
+            "label": "Enable Banner 1"
+          },
+          {
+            "type": "select",
+            "id": "banner_xl_1",
+            "label": "Width on megamenu large laptop 1200px ↑",
+            "default": "col-xl-4",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-xl-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "banner_lg_1",
+            "label": "Width on megamenu laptop 992px ↑",
+            "default": "col-lg-4",
+            "options": [
+              {
+                "value": "col-lg-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-lg-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "image_size1",
+            "label": "Image Size Banner 1",
+            "default": "255x300"
+          },
+          {
+            "type": "image_picker",
+            "id": "novmenu_banner1",
+            "label": "Banner image"
+          },
+          {
+            "type": "text",
+            "id": "novmenu_banner_link1",
+            "label": "Banner Link"
+          },
+          {
+            "type": "text",
+            "id": "class_bn1",
+            "label": "Banner class"
+          },
+          {
+            "type": "header",
+            "content": "Block Banner 2"
+          },
+          {
+            "type": "checkbox",
+            "id": "novmenu_banner_enable2",
+            "label": "Enable Banner 2"
+          },
+          {
+            "type": "select",
+            "id": "banner_xl_2",
+            "label": "Width on megamenu large laptop 1200px ↑",
+            "default": "col-xl-4",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-xl-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "banner_lg_2",
+            "label": "Width on megamenu laptop 992px ↑",
+            "default": "col-lg-4",
+            "options": [
+              {
+                "value": "col-lg-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-lg-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "image_size2",
+            "label": "Image size banner 2",
+            "default": "255x300"
+          },
+          {
+            "type": "image_picker",
+            "id": "novmenu_banner2",
+            "label": "Banner image"
+          },
+          {
+            "type": "text",
+            "id": "novmenu_banner_link2",
+            "label": "Banner link"
+          },
+          {
+            "type": "text",
+            "id": "class_bn2",
+            "label": "Banner class"
+          },
+          {
+            "type": "header",
+            "content": "Block Banner 3"
+          },
+          {
+            "type": "checkbox",
+            "id": "novmenu_banner_enable3",
+            "label": "Enable banner 3"
+          },
+          {
+            "type": "select",
+            "id": "banner_xl_3",
+            "label": "Width on megamenu large laptop 1200px ↑",
+            "default": "col-xl-4",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-xl-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "banner_lg_3",
+            "label": "Width on megamenu laptop 992px ↑",
+            "default": "col-lg-4",
+            "options": [
+              {
+                "value": "col-lg-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-lg-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "image_size3",
+            "label": "Image size banner 3",
+            "default": "255x300"
+          },
+          {
+            "type": "image_picker",
+            "id": "novmenu_banner3",
+            "label": "Banner image"
+          },
+          {
+            "type": "text",
+            "id": "novmenu_banner_link3",
+            "label": "Banner link"
+          },
+          {
+            "type": "text",
+            "id": "class_bn3",
+            "label": "Banner class"
+          },
+          {
+            "type": "header",
+            "content": "Block Collection List"
+          },
+          {
+            "type": "checkbox",
+            "id": "collection_enable",
+            "label": "Enable block collection"
+          },
+          {
+            "type": "select",
+            "id": "collection_xl",
+            "label": "Width on megamenu large laptop 1200px ↑",
+            "default": "col-xl-3",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-xl-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "collection_lg",
+            "label": "Width on megamenu laptop 992px ↑",
+            "default": "col-lg-3",
+            "options": [
+              {
+                "value": "col-lg-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-lg-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "name_collec_1",
+            "label": "Title collection 1",
+            "default": "Best Sellers"
+          },
+          {
+            "type": "url",
+            "id": "link_1",
+            "label": "Link collection 1"
+          },
+          {
+            "type": "text",
+            "id": "name_collec_2",
+            "label": "Title collection 2",
+            "default": "New Arrival"
+          },
+          {
+            "type": "url",
+            "id": "link_2",
+            "label": "Link collection 2"
+          },
+          {
+            "type": "text",
+            "id": "name_collec_3",
+            "label": "Title collection 3",
+            "default": "Top Trending"
+          },
+          {
+            "type": "url",
+            "id": "link_3",
+            "label": "Link collection 3"
+          },
+          {
+            "type": "text",
+            "id": "name_collec_4",
+            "label": "Title collection 4",
+            "default": "Top Trending"
+          },
+          {
+            "type": "url",
+            "id": "link_4",
+            "label": "Link collection 4"
+          },
+          {
+            "type": "text",
+            "id": "name_collec_5",
+            "label": "Title collection 5",
+            "default": "Denim Collection"
+          },
+          {
+            "type": "url",
+            "id": "link_5",
+            "label": "Link collection 5"
+          },
+          {
+            "type": "header",
+            "content": "Block Product Slider"
+          },
+          {
+            "type": "checkbox",
+            "id": "product_enable",
+            "label": "Enable product"
+          },
+          {
+            "type": "select",
+            "id": "product_xl",
+            "label": "Width on megamenu large laptop 1200px ↑",
+            "default": "col-xl-4",
+            "options": [
+              {
+                "value": "col-xl-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-xl-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-xl-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-xl-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-xl-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-xl-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-xl-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-xl-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-xl-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-xl-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-xl-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-xl-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "product_lg",
+            "label": "Width on megamenu laptop 992px ↑",
+            "default": "col-lg-4",
+            "options": [
+              {
+                "value": "col-lg-1",
+                "label": "1/12"
+              },
+              {
+                "value": "col-lg-2",
+                "label": "2/12"
+              },
+              {
+                "value": "col-lg-3",
+                "label": "3/12"
+              },
+              {
+                "value": "col-lg-4",
+                "label": "4/12"
+              },
+              {
+                "value": "col-lg-5",
+                "label": "5/12"
+              },
+              {
+                "value": "col-lg-6",
+                "label": "6/12"
+              },
+              {
+                "value": "col-lg-7",
+                "label": "7/12"
+              },
+              {
+                "value": "col-lg-8",
+                "label": "8/12"
+              },
+              {
+                "value": "col-lg-9",
+                "label": "9/12"
+              },
+              {
+                "value": "col-lg-10",
+                "label": "10/12"
+              },
+              {
+                "value": "col-lg-11",
+                "label": "11/12"
+              },
+              {
+                "value": "col-lg-12",
+                "label": "12/12"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "title_product",
+            "label": "Title product",
+            "default": "Featured Product"
+          },
+          {
+            "type": "product",
+            "id": "product_1",
+            "label": "Product 1"
+          },
+          {
+            "type": "product",
+            "id": "product_2",
+            "label": "Product 2"
+          },
+          {
+            "type": "product",
+            "id": "product_3",
+            "label": "Product 3"
+          },
+          {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Auto play",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "icon_menu",
+        "name": "Icon Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "name_item",
+            "label": "Menu item name",
+            "info": "Menu item of main-menu. Menu item has dropdown megamenu."
+          },
+          {
+            "type": "text",
+            "id": "desc",
+            "label": "Menu item description"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon_menus",
+            "label": "Icon Menu"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

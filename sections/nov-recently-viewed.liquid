@@ -1,0 +1,399 @@
+{% assign sst = section.settings %}
+{% assign limit = sst.limit %}
+{% assign xxl = sst.grid_number_xxl %}
+{% assign xl = sst.grid_number %}
+{% assign lg = sst.grid_number_lg %}
+{% assign md = sst.grid_number_md %}
+{% assign sm = sst.grid_number_sm %}
+{% assign xs = sst.grid_number_xs %}
+{%- assign bg_image = sst.background_image -%}
+<style>
+  #shopify-section-{{ section.id }} .distance {
+    padding-top: {{ sst.distance_top }}px;
+    padding-bottom: {{ sst.distance_bottom }}px;
+    {% if sst.background_color != blank %}
+      background-color: {{ sst.background_color }};
+    {% endif %}
+    {% if bg_image.src != blank %}
+      background-image: url("{{ bg_image | img_url: '1920x' }}");
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+    {% endif %}
+  }
+  @media(min-width: 768px) {
+    #shopify-section-{{ section.id }} .distance {
+      padding-top: {{ sst.distance_top_md }}px;
+      padding-bottom: {{ sst.distance_bottom_md }}px;
+    }
+  }
+  @media(min-width: 1200px) {
+    #shopify-section-{{ section.id }} .distance {
+      padding-top: {{ sst.distance_top_xl }}px;
+      padding-bottom: {{ sst.distance_bottom_xl }}px;
+    }
+  }
+</style>
+{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+{{ 'jquery.products.min.js' | asset_url | script_tag }}
+{{ 'vendor.js' | asset_url | script_tag }}
+<div class="distance{% if sst.class != blank %} {{ sst.class }}{% endif %}{% if sst.show_border %} show-border-top{% endif %}">
+  <div class="{{ sst.container }}">
+    {% render 'heading-section' %}
+    <div id="recently-viewed-products" class="row grid--view-items spacing-30 spacing-xs-15" style="display: none;">
+    </div>
+    {% raw %}
+      <script id="recently-viewed-product-template" type="text/x-jquery-tmpl">
+      <div class="item sp-item">
+        <div class="item-product{% endraw %}{% raw %} product-style-collection">
+          <div class="inner-top">
+            <div class="product-top thumbnail-container {{if images[1] != null}} has-multiimage{{/if}}">
+              <a href="${url}" class="w-100" data-index="0">
+                <img class="product__thumbnail lazyload" data-src="${Shopify.Products.resizeImage(featured_image, "360x")}" alt="">
+                {{if images[1] != null}}
+                  <img class="product__thumbnail-second lazyload" data-src="${Shopify.Products.resizeImage(images[1], "360x")}" alt="">
+                {{/if}}
+              </a>
+              <div class="product--badge">
+                {{if compare_at_price_min > price_min }}
+                <span class="badge badge-sale">-${Math.round((compare_at_price_min - price_min)*100/compare_at_price_min)}%</span>
+                {{/if}}
+              </div>
+              {% endraw %}
+              {% if settings.wishlist_enable or settings.quickview_enable %}
+              <div class="button--top">
+              {% if settings.wishlist_enable %}
+              {% raw %}
+                <div class="productWishList">
+                  <a class="btnProductWishlist item-product__wishlist" data-icon-wishlist href="#" data-product-handle="${handle}" data-id="${id}"{% endraw %} {% if settings.tooltip_enable %}{% raw %} data-toggle="tooltip" data-placement="top"{% endraw %} title="{{ 'products.butttons.wishlist' | t }}" {% endif %}{% raw %}>
+                    <i class="zmdi zmdi-favorite"></i>
+                  </a>
+                </div>
+              {% endraw %}
+              {% endif %}
+              {% if settings.quickview_enable %}
+              {% raw %}
+                <div class="productQuickView d-none d-md-block">
+                  <a class="btnProductQuickview" href="#" data-url="/products/${handle}?view=quick_view" data-product-url="/products/${handle}" data-handle="${handle}" data-pid="${variants[0].id}"{% endraw %}{% if settings.tooltip_enable %}{% raw %} data-toggle="tooltip" data-placement="top"{% endraw %} title="{{ 'products.butttons.quickview' | t }}" {% endif %}{% raw %}>
+                    <i class="zmdi zmdi-collection-image-o"></i>
+                  </a>
+                </div>
+              {% endraw %}
+              {% endif %}
+                </div>
+              {% endif %}
+              {% raw %}
+            </div>
+            <div class="product__info">
+              <div class="product__title"><a href="${url}">${title}</a></div>
+              <div class="price-box mt-5">
+                {{if compare_at_price_min > price_min }}
+                  <div class="price-sale">
+                    <span class="special-price" data-price-grid><span class="money">{{html Shopify.formatMoney(price_min, theme.moneyFormat)}}</span></span>
+                    <span class="old-price" data-compare-price-grid><span class="money">{{html Shopify.formatMoney(compare_at_price_min, theme.moneyFormat)}}</span></span>
+                  </div>
+                {{else}}
+                  <div class="price-regular">
+                    <span data-price-grid><span class="money">{{html Shopify.formatMoney(price_min, theme.moneyFormat)}}</span></span>
+                  </div>
+                {{/if}}
+              </div>
+              {% endraw %}
+              {% raw %}
+            </div>
+          </div>
+        </div>
+      </div>
+      </script>
+    {% endraw %}
+    <script>
+      Shopify.Products.showRecentlyViewed({
+        howManyToShow: {{ limit }},
+        wrapperId: 'recently-viewed-products',
+        templateId: 'recently-viewed-product-template',
+        onComplete: function() {
+          if ($('html').hasClass('lang-rtl')) {
+            var rtl = true
+          } else {
+            var rtl = false
+          }
+          if(!$('#recently-viewed-products').hasClass('slick-initialized')) {
+            $('#recently-viewed-products').slick({
+                nextArrow: '<div class="arrow-next"><i class="zmdi zmdi-chevron-right"></i></div>',
+                prevArrow: '<div class="arrow-prev"><i class="zmdi zmdi-chevron-left"></i></div>',
+                slidesToShow: {{ xxl }},
+                slidesToScroll: {{ xxl }},
+                dots: false,
+                arrows: true,
+                rtl: rtl,
+                responsive: [
+                  {
+                    breakpoint: 1440,
+                    settings: {
+                      slidesToShow: {{ xl }},
+                      slidesToScroll: {{ xl }}
+                    }
+                  },
+                  {
+                    breakpoint: 1200,
+                    settings: {
+                      slidesToShow: {{ lg }},
+                      slidesToScroll: {{ lg }}
+                    }
+                  },
+                  {
+                    breakpoint: 992,
+                    settings: {
+                      slidesToShow: {{ md }},
+                      slidesToScroll: {{ md }},
+                      arrows: false,
+                    }
+                  },
+                  {
+                    breakpoint: 768,
+                    settings: {
+                      slidesToShow: {{ sm }},
+                      slidesToScroll: {{ sm }}
+                    }
+                  },
+                  {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: {{ xs }},
+                        slidesToScroll: {{ xs }}
+                    }
+                  }
+                ]
+            });
+          }
+          Currency.convertAll(shopCurrency, $('#currencies span.selected').attr('data-currency'));
+        }
+    });
+    </script>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Vinova Recently Viewed",
+    "class": "section-recently-viewed",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "<p>Vinova Recently Viewed</p>"
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading color",
+        "default": "#222222"
+      },
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Sub heading",
+        "default": "<p>Subtitle from happy customers</p>"
+      },
+      {
+        "type": "color",
+        "id": "subheading_color",
+        "label": "Sub heading color",
+        "default": "#666666"
+      },
+      {
+        "type": "select",
+        "id": "heading_alignment",
+        "label": "Heading alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          },
+          {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type":  "header",
+        "content": "Product item per row"
+      },
+      {
+        "type": "range",
+        "id": "grid_number_xxl",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row 1440px ↑",
+        "default": 5
+      },
+      {
+        "type": "range",
+        "id": "grid_number",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row large desktop",
+        "default": 3,
+        "info": "Breakpoint 1200px ↑"
+      },
+      {
+        "type": "range",
+        "id": "grid_number_lg",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row desktop",
+        "default": 3,
+        "info": "Breakpoint 1199px ↓"
+      },
+      {
+        "type": "range",
+        "id": "grid_number_md",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row tablet",
+        "default": 3,
+        "info": "Breakpoint 991px ↓"
+      },
+      {
+        "type": "range",
+        "id": "grid_number_sm",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row mobile",
+        "default": 2,
+        "info": "Breakpoint 767px ↓"
+      },
+      {
+        "type": "range",
+        "id": "grid_number_xs",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Products per row small mobile",
+        "default": 2,
+        "info": "Breakpoint 575px ↓"
+      },
+      {
+        "type": "range",
+        "id": "limit",
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "label": "Limit",
+        "default": 30,
+        "info": "Select number limit products"
+      },
+      {
+        "type":  "header",
+        "content": "Slider options"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_nav",
+        "label": "Show navigation",
+        "default": false
+      },
+      {
+        "type":  "header",
+        "content": "Design option"
+      },
+      {
+        "type": "checkbox",
+        "id": "animate",
+        "label": "Show animated",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_border",
+        "label": "Show border top",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "container",
+        "label": "Container",
+        "default": "container",
+        "options": [
+          { "value": "container", "label": "Container" },
+          { "value": "container-fluid", "label": "Container fluid" },
+          { "value": "container-full", "label": "Container full width" }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "header",
+        "content": "Spacing top (px)"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_xl",
+        "label": "Large laptop",
+        "default": 30,
+        "info": "Breakpoint 1200px"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_md",
+        "label": "Tablet",
+        "default": 30,
+        "info": "Breakpoint 768px"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_xs",
+        "label": "Mobile",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "Spacing bottom (px)"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_xl",
+        "label": "Large laptop",
+        "default": 30,
+        "info": "Breakpoint 1200px"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_md",
+        "label": "Tablet",
+        "default": 30,
+        "info": "Breakpoint 768px"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_xs",
+        "label": "Mobile",
+        "default": 30
+      }
+    ]
+  }
+{% endschema %}

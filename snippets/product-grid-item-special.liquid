@@ -1,0 +1,129 @@
+{%- liquid
+  assign on_sale = false
+  if product.compare_at_price_min > product.price_min
+    assign on_sale = true
+  endif
+  assign option_color_swatch = settings.option_color_swatch | downcase
+  for option in product.options_with_values
+      assign option_name = option.name | downcase
+      if option_color_swatch contains option_name
+        assign product_option = option
+        assign index = forloop.index0
+        assign position = forloop.index | minus: 1
+        break
+      else
+        assign position = 0
+      endif
+  endfor
+
+  assign optionCount = product.options | size
+  assign downcased_option = product.options_with_values[0].name | downcase
+  assign available = product.variants.first.available
+  assign current_variant = product.selected_or_first_available_variant
+  assign swatchColor = false
+  if settings.use_color_swatch and optionCount == 1 and option_color_swatch contains downcased_option
+   assign swatchColor = true
+  endif
+-%}
+
+<div class="item-product product-style-special {% if settings.show_border_product %} h_bd{% endif %}{% if settings.show_background_product %} bg{% endif %}" data-product-id="product-{{ product.id }}" data-json-product='{"variants": {{ product.variants | json | escape }},"media": {{ product.media | json }}}'>
+  <div class="inner-top">
+    <div class="product-top thumbnail-container {% if product.images.size > 1 %} has-multiimage{% endif %}">
+      <a href="{{ product.url | within: collection }}">
+        {% assign img_url = product.featured_image %}
+        <div class="respone_image" style="padding-top:{{ 1 | divided_by: img_url.aspect_ratio | times: 100}}%;">
+          {%- assign imagealt = img_url.alt | default: product.title | strip_html | escape -%}
+          {{ img_url | image_url: width: 1920 | image_tag:
+            loading: 'lazy',
+            class: 'product__thumbnail lazyload',
+            alt: imagealt,
+            widths: '200, 350, 525, 768, 992, 1200, 1440, 1920'
+          }}
+          {% for image in product.images %}
+            {% assign img_url = image.src %}
+            {% if forloop.first != true %}
+              {{ img_url | image_url: width: 1920 | image_tag:
+                loading: 'lazy',
+                class: 'product__thumbnail-second lazyload',
+                alt: imagealt,
+                widths: '200, 350, 525, 768, 992, 1200, 1440, 1920'
+              }}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </a>
+      <div class="product--badge-sp">
+        <span class="badges">{{ label_best_choice }}</span>
+      </div>
+      {% if settings.addtocart_enable %}
+        <div class="product__popup-swatch">
+          {% render 'add-to-cart-form', product: product, id: 'grid-product-form-', position: position, sectionId: sectionId, blockId: blockId %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="product__info text-left">
+      {% if settings.show_rating %}
+         <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge'>{{ product.metafields.judgeme.badge }}</div>
+      {% endif %}
+      <div class="product__title mt-13 line-clamp-1"><a href="{{ product.url | within: collection }}"><span>{{ product.title }}</span></a></div>
+      <div class="price-box mt-3">
+        {% if on_sale %}
+        <div class="price-sale">
+          <span class="special-price" data-price-grid>{{ product.variants[0].price | money }}</span>
+          <span class="old-price" data-compare-price-grid>{{ product.variants[0].compare_at_price | money }}</span>
+        </div>
+        {% else %}
+          <div class="price-regular">
+            <span data-price-grid>{{ product.variants[0].price | money }}</span>
+          </div>
+        {% endif %}
+      </div>
+
+      {% render 'item-swatch', product: product, option_color_swatch: option_color_swatch, downcased_option: option_name, product_option: product_option, index: index %}
+    </div>
+    <div class="button--top">
+      {% if swatchColor == true or product.has_only_default_variant %}
+        <form action="{{ routes.cart_url }}/add" method="post" class="form-btn-item-product {% if product.has_only_default_variant %}variants-default{% else %}one-option-color{% endif %}" id="grid-product-form--{{ product.id }}-{{ sectionId }}" data-id="product-actions-{{ product.id }}" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{{ product.variants[0].id }}" />
+          <input type="hidden" name="quantity" value="1" />
+          {% if available == false %}
+            <button data-btn-addToCart class="add-to-cart-btn btn-default style-1" type="submit" data-form-id="#grid-product-form--{{ product.id }}-{{ sectionId }}" disabled="disabled">
+              {% render 'icon-cart' %}
+              <span class="add-to-cart-text">{{ 'products.product.sold_out' | t }}</span>
+            </button>
+          {% else %}
+            <button data-btn-addToCart
+            class="add-to-cart-btn btn-default style-1{% unless settings.cart_status_addtocart == 'goto_page_cart' %} product-form__cart-submit{% endunless %}"
+            type="submit"
+            data-form-id="#grid-product-form--{{ product.id }}-{{ sectionId }}"
+            {% if settings.tooltip_enable %}
+              data-toggle="tooltip"
+              data-placement="top"
+              title="{% if current_variant.inventory_policy == 'continue' and current_variant.inventory_management == 'shopify' %}{{ 'products.product.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}"
+            {% endif %}>
+              {% render 'icon-cart' %}
+              <span class="add-to-cart-text">
+                {% if current_variant.inventory_policy == 'continue' and current_variant.inventory_management == 'shopify' %}
+                  {{ 'products.product.pre_order' | t }}
+                {% else %}
+                  {{ 'products.product.add_to_cart' | t }}
+              </span>
+              {% endif %}
+              <span class="load"></span>
+            </button>
+          {% endif %}
+        </form>
+      {% else %}
+        <div class="btn-quick-add style-1 pointer"{% if settings.tooltip_enable %}data-toggle="tooltip" data-placement="top" title="{{ 'products.product.quick_add' | t }}"{% endif %}>{% render 'icon-cart' %}<span class="add-to-cart-text">{{ 'products.product.quick_add' | t }}</span></div>
+      {% endif %}
+      {% if settings.wishlist_enable %}
+        {% render 'nov-wishlist', id: product.id, handle: product.handle %}
+      {% endif %}
+      {% if settings.quickview_enable %}
+        {% render 'nov-quickview', id: product.variants.first.id, handle: product.handle %}
+      {% endif %}
+    </div>
+  </div>
+</div>

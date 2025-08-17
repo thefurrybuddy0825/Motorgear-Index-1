@@ -1,0 +1,73 @@
+<div class="product-single__tab mt-60"{% if section.settings.background_color != blank %} style="background-color: {{ section.settings.background_color }};"{% endif %}>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      {% if section.settings.show_description %}
+        <li><a class="active" href="#proTabs1" data-toggle="tab">{{ 'products.product.tabdes' | t }}</a></li>
+      {% endif %}
+      {% for block in section.blocks %}
+        {% if block.type == 'block_text' %}
+          <li><a href="#tabCustom-{{ forloop.index }}" data-toggle="tab">{{ block.settings.custom_title }}</a></li>
+        {% endif %}
+        {% if block.type == 'block_img' %}
+          <li><a href="#tabCustom-{{ forloop.index }}" data-toggle="tab">{{ block.settings.custom_title }}</a></li>
+        {% endif %}
+        {% if block.type == 'block_video' %}
+          <li><a href="#tabCustom-{{ forloop.index }}" data-toggle="tab">{{ block.settings.custom_title }}</a></li>
+        {% endif %}
+        {% if block.type == 'block_customtab' %}
+          <li><a href="#tabCustom-{{ forloop.index }}" data-toggle="tab">{{ block.settings.custom_title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <div class="tab-content">
+      {% if section.settings.show_description %}
+      <div class="tab-pane active" id="proTabs1">{{ product.description }}</div>
+      {% endif %}
+      {% for block in section.blocks %}
+        {% if block.type == 'block_text' %}
+          <div class="tab-pane" id="tabCustom-{{ forloop.index }}">
+            <div class="block_text">{{ block.settings.custom_content }}</div>
+          </div>
+        {% endif %}
+        {% if block.type == 'block_img' %}
+          <div class="tab-pane" id="tabCustom-{{ forloop.index }}">
+            <div class="block_img mt-20">
+              {% assign img_url = block.settings.custom_content %}
+              <div class="respone_image" style="padding-top:{{ 1 | divided_by: img_url.aspect_ratio | times: 100}}%;">
+                <img class="lazyload"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                  data-src="{{ img_url | img_url: '180x' }}"
+                  data-srcset="{{ img_url | img_url: '380x' }} 380w,{{ img_url | img_url: '580x' }} 580w,{{ img_url | img_url: '768x' }} 768w,{{ img_url | img_url: '900x' }} 900w,{{ img_url | img_url: '1080x' }} 1080w,{{ img_url | img_url: '1296x' }} 1296w,{{ img_url | img_url: '1512x' }} 1512w,{{ img_url | img_url: '1728x' }} 1728w, {{ img_url | img_url: '2048x' }} 2048w" data-sizes="auto" alt="{{ img_url.alt }}">
+              </div>
+            </div>
+          </div>
+        {% endif %}
+        {% if block.type == 'block_video' %}
+          <div class="tab-pane" id="tabCustom-{{ forloop.index }}">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}" id="video" allowfullscreen></iframe>
+            </div>
+          </div>
+        {% endif %}
+        {% if block.type == 'block_customtab' %}
+          <div class="tab-pane" id="tabCustom-{{ forloop.index }}">
+            <ul class="product-single__customtab list-unstyled">
+              {% for i in (1..10) %}
+                {%- assign tId = 't' | append: i -%}
+                {%- assign cId = 'c' | append: i -%}
+                {% if block.settings[tId] != blank or block.settings[cId] != blank %}
+                  <li>
+                    <div class="row align-items-center p-4 pt-10 pb-10">
+                      <div class="title col-4">{{ block.settings[tId] }}</div>
+                      <div class="content col-8">{{ block.settings[cId] }}</div>
+                    </div>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

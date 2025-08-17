@@ -1,0 +1,57 @@
+<div class="header-settings" nov-item-act data-act="header_settings">
+  <div class="account-content">
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+        <div class="item">
+          <a class="myaccount" href="{{ shop.secure_url }}/account" rel="nofollow" title="{{ 'layout.customer.account' | t }}">
+            {% if customer.default_address.name != blank %}{{ customer.default_address.name }}{% else %}{{ 'layout.customer.account' | t }}{% endif %}
+          </a>
+        </div>
+        <div class="item">
+          <a class="logout" href="{{ shop.secure_url }}/account/logout" rel="nofollow" title="{{ 'layout.customer.log_out' | t }}">
+            <span>{{ 'layout.customer.log_out' | t }}
+          </a>
+        </div>
+      {% else %}
+        <div class="item">
+          <a class="login" href="{{ shop.secure_url }}/account/login" rel="nofollow" title="{{ 'layout.customer.log_in' | t }}">
+            {{ 'layout.customer.log_in' | t }}
+          </a>
+        </div>
+        {% if shop.customer_accounts_optional %}
+          <div class="item">
+            <a class="register" href="{{ shop.secure_url }}/account/register" rel="nofollow" title="{{ 'layout.customer.create_account' | t }}">
+              {{ 'layout.customer.create_account' | t }}
+            </a>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    <div class="item">
+      <a href="{{ settings.link_page_wishlist }}" rel="nofollow" title="{{ 'layout.customer.wishlists' | t }}">
+        {{ 'layout.customer.wishlists' | t }}
+      </a>
+    </div>
+    <div class="item">
+      <a class="check-out" href="{{ shop.secure_url }}/checkout" rel="nofollow" title="{{ 'layout.customer.checkout' | t }}">
+        {{ 'layout.customer.checkout' | t }}
+      </a>
+    </div>
+  </div>
+  {% if settings.show_multiple_currencies or settings.show_language and localization.available_languages.size > 1 %}
+    <div class="nov-lang-cur pt-30">
+      {% if settings.show_multiple_currencies == true %}
+        <div class="block-currency">
+          <div class="title font-500 text-uppercase mb-15 c_h f_pr">{{ "general.currency.title" | t }}</div>
+          {% render 'nov-block-currency', color: "#222"%}
+        </div>
+      {% endif %}
+      {%- if localization.available_languages.size > 1 -%}
+        <div class="block-language mt-25">
+          <div class="title font-500 text-uppercase mb-15 c_h f_pr">{{ "general.language.title" | t }}</div>
+          {% render 'nov-block-language' id: 'CanvasLanguage', color: "#222"%}
+        </div>
+      {%- endif -%}
+    </div>
+  {% endif %}
+</div>

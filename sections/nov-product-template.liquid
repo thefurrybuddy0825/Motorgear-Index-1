@@ -1,0 +1,630 @@
+{%- liquid
+  assign sst = section.settings
+  if template == 'product.left'
+    assign viewtype = 'left'
+  elsif template == "product.lefttwo"
+    assign viewtype = 'lefttwo'
+  elsif template == "product.right"
+    assign viewtype = 'right'
+  elsif template == "product.grid"
+    assign viewtype = 'grid'
+  elsif template == "product.gridtwo"
+    assign viewtype = 'gridtwo'
+  elsif template == "product.scroll"
+    assign viewtype = 'scroll'
+  elsif template == "product.imggrid"
+    assign viewtype = 'imggrid'
+  elsif template == "product.sliderimg"
+    assign viewtype = 'sliderimg'
+  elsif template == "product.sliderimgtwo"
+    assign viewtype = 'sliderimgtwo'
+  elsif template == "product.accordion"
+    assign viewtype = 'accordion'
+  elsif template == "product.accordiontwo"
+    assign viewtype = 'accordiontwo'
+  else
+    if settings.type_sidebar_product == 'left'
+      assign viewtype = 'left'
+    elsif settings.type_sidebar_product == 'lefttwo'
+      assign viewtype = 'lefttwo'
+    elsif settings.type_sidebar_product == 'right'
+      assign viewtype = 'right'
+    elsif settings.type_sidebar_product == 'grid'
+      assign viewtype = 'grid'
+    elsif settings.type_sidebar_product == 'gridtwo'
+      assign viewtype = 'gridtwo'
+    elsif settings.type_sidebar_product == 'scroll'
+      assign viewtype = 'scroll'
+    elsif settings.type_sidebar_product == 'imggrid'
+      assign viewtype = 'imggrid'
+    elsif settings.type_sidebar_product == 'sliderimg'
+      assign viewtype = 'sliderimg'
+    elsif settings.type_sidebar_product == 'sliderimgtwo'
+      assign viewtype = 'sliderimgtwo'
+    elsif settings.type_sidebar_product == 'accordion'
+      assign viewtype = 'accordion'
+    elsif settings.type_sidebar_product == 'accordiontwo'
+      assign viewtype = 'accordiontwo'
+    else
+      assign viewtype = 'default'
+    endif
+  endif
+
+  assign name_template = 'product-template__' | append: viewtype
+  if viewtype =='grid' or viewtype =='gridtwo'
+    assign name_template = name_template | append: ' thumbgrid'
+  endif
+
+  case viewtype
+    when 'lefttwo', 'right'
+      assign col_image = 'col-lg-7 col-md-6'
+      assign col_info = 'col-lg-5 col-md-6'
+    when 'scroll'
+      assign col_image = 'col-lg-7'
+      assign col_info = 'col-lg-5'
+    when 'imggrid'
+      assign col_image = 'col-xxl-8 col-lg-7 col-md-6'
+      assign col_info = 'col-xxl-4 col-lg-5 col-md-6'
+    when 'sliderimg', 'sliderimgtwo'
+      assign col_image = 'col-12'
+      assign col_info = 'col-12 mt-85'
+    else
+      assign col_image = 'col-md-6'
+      assign col_info = 'col-md-6'
+  endcase
+
+-%}
+
+{% style %}
+  {% if sst.show_border_thumb %}
+    .template-product .proFeaturedImage,
+    .template-product .thumbItem a,
+    .template-product .product-template__scroll .proFeaturedImage .item,
+    .template-product .product-template__imggrid .proFeaturedImage .item-content,
+    .template-product .product-template__sliderimg .proFeaturedImage .item-content,
+    .template-product .product-template__sliderimgtwo .proFeaturedImage .item-content {
+      border: 1px solid {{ sst.c_border }};
+    } 
+  {% endif %}
+  {%- assign bg_image = settings.breadcrumb_product_image -%}
+  {% if bg_image.src != blank %}
+    #NovBreadcrumbs {
+      background: url("{{ bg_image | img_url: '1920x' }}") no-repeat center;
+      background-size: cover;
+    }
+  {% endif %}
+{% endstyle %}
+
+
+<div class="{{ name_template }}">
+  {% render 'nov-breadcrumb', class_br: 'breadcrumb_product' %}
+  <div class="product-template__container" data-section-id="{{ section.id }}" data-wishlist-product>
+    <div class="TopContent">
+
+      {% unless viewtype == 'left' or viewtype == 'sliderimgtwo' %}
+        <div class="container">
+      {% endunless %}
+
+        <div class="product-single row">
+          <div class="product-single__image {{ col_image }}">
+            <div class="product-single__photos product-single__sticky">
+              {% render 'product-single-media-featured',viewtype: viewtype %}
+              {% unless viewtype contains 'sliderimg' %}
+                {% render 'product-single-media-thumb', viewtype: viewtype, aspect_ratio: aspect %}
+              {% endunless %}
+            </div>
+          </div>
+          <div class="product-single__information position-static {{ col_info }} mt-sm-40{% if viewtype == 'scroll' %} mt-md-50{% endif %}">
+            {% if viewtype contains 'sliderimg' %}
+              {% render 'product-template-info-sliderimg', viewtype: viewtype %}
+            {% else %}
+              {% render 'product-template-info-default' %}
+            {% endif %}
+          </div>
+        </div>
+        
+      {% unless viewtype == 'left' or viewtype == 'sliderimgtwo' %}
+        </div>
+      {% endunless %}
+
+      {% unless viewtype contains 'accordion' %}
+        {% render 'product-single-tab' %}
+      {% endunless %}
+
+      {% if viewtype == 'accordion' %}
+        <div class="container">
+          {% render 'product-single-accordion', class: 'mt-90' %}
+        </div>
+      {% endif %}
+    </div>
+    {% comment %}
+    {% if sst.show_related %}
+      <div class="BottomContent overflow_hidden">
+        <div class="container">
+          {% render 'nov-related-product' %}
+        </div>
+      </div>
+    {% endif %}
+    {% endcomment %}
+    {% if sst.show_stick_product %}
+      {% render 'product-single-sticky-add' %}
+    {% endif %}
+  </div>
+</div>
+{% render 'nov-popup-share' %}
+{% render 'nov-popup-ask' %}
+{% render 'photoswipe-js' %}
+{{ 'photoswipe.css' | asset_url | stylesheet_tag }}
+{{ 'css-product_detail.css' | asset_url | stylesheet_tag }}
+{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+{{ 'jquery.products.min.js' | asset_url | script_tag }}
+<script>Shopify.Products.recordRecentlyViewed();</script>
+<script>
+  jQuery('variant-radios :radio, variant-selects select').change(function() {
+    var optionValue = jQuery(this).val();
+    jQuery(this).parents('fieldset, .product-form__input').find('.variant_current').text(optionValue);
+    // Style image grid and scroll
+    if ($(window).width() > 991 ) {
+      if ($('.product-template__imggrid').length > 0 || $('.product-template__scroll').length > 0) {
+        setTimeout(function() {
+          var parent = $('.product-template__imggrid .proFeaturedImage, .product-template__scroll .proFeaturedImage'),
+              active = parent.find('.act'),
+              positi = active.data('position'),
+              offset = active.offset().top;
+              $("body,html").animate({scrollTop: offset}, "normal");
+              $('.thumbItem').removeClass('active');
+              $('.thumbItem[data-position="'+ positi +'"]').addClass('active');
+        }, 200);
+      }
+    }
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_border_thumb",
+        "label": "Show border"
+      },
+      {
+        "type": "color",
+        "id": "c_border",
+        "label": "Border color",
+        "default": "#ececec"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_stick_product",
+        "label": "Show sticky add to cart",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity_selector",
+        "label": "Show quantity selector",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_swatch_enable",
+        "label": "Enable swatch",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "img_swatch",
+        "label": "Enable image swatch",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share",
+        "label": "Show share",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_ask",
+        "label": "Show ask a question",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sizeguide",
+        "label": "Show size guide",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_faq",
+        "label": "Show FAQ",
+        "default": true
+      },
+      {
+        "type": "url",
+        "id": "faq",
+        "label": "Link to FAQ"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sku",
+        "label": "Show sku",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_categories",
+        "label": "Show categories",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_available",
+        "label": "Show available",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_des",
+        "label": "Show summary description",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "label": "Enable image zoom",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_progress_deals",
+        "label": "Enable progress bar",
+        "default": true,
+        "info": "[Create metafields 'initial'](https://shopifymate.com/documentation/guide/countdown.html) and add products to display"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_countdown",
+        "label": "Enable countdown day",
+        "default": true,
+        "info": "[Create metafields 'countdownt'](https://shopifymate.com/documentation/guide/countdown.html) and add products to display"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_related",
+        "label": "Show Related product",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "related_limit",
+        "label": "Related product limit",
+        "default": 10
+      },
+      {
+        "type": "header",
+        "content": "Accordion"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_description",
+        "label": "Show Description",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payments",
+        "label": "Show payments",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_payments",
+        "label": "Title payments",
+        "default": "Guaranteed safe checkout:"
+      },
+      {
+        "type": "image_picker",
+        "id": "payments",
+        "label": "Upload Image Payments"
+      },
+      { 
+        "type": "text",
+        "id": "time",
+        "label": "Ship Time",
+        "default": "Orders ship within 5 to 10 business days."
+      },
+      {
+        "type": "text",
+        "id": "size_time",
+        "label": "Size ships time",
+        "default": "12px"
+      },
+      {
+        "type": "color",
+        "id": "color_time",
+        "label": "Color ships time",
+        "default": "#494949"
+      },
+      {
+        "type": "text",
+        "id": "truck",
+        "label": "Transport",
+        "default": "Hoorey ! This item ships free to the US"
+      },
+      {
+        "type": "text",
+        "id": "size_truck",
+        "label": "Size transport",
+        "default": "12px"
+      },
+      {
+        "type": "color",
+        "id": "color_truck",
+        "label": "Color transport",
+        "default": "#494949"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Tab Description"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block_text",
+        "name": "Block Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "custom_title",
+            "label": "Block title"
+          },
+          {
+            "type": "richtext",
+            "id": "custom_content",
+            "label": "Block text"
+          }
+        ]
+      },
+      {
+        "type": "block_img",
+        "name": "Block Image",
+        "settings": [
+          {
+            "type": "text",
+            "id": "custom_title",
+            "label": "Block title"
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_content",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "block_video",
+        "name": "Block Video",
+        "settings": [
+          {
+            "type": "text",
+            "id": "custom_title",
+            "label": "Block title"
+          },
+          {
+            "type": "video_url",
+            "id": "video_url",
+            "label": "Video link",
+            "accept": ["youtube", "vimeo"],
+            "info": "Only For Youtube And Vimeo"
+          }
+        ]
+      },
+      {
+        "type": "policy",
+        "name": "Policy Item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "policy_icon",
+            "label": "Policy icon"
+          },
+          {
+            "type": "text",
+            "id": "title_policy",
+            "label": "Title policy",
+            "default": "Free Delivery From $ 250"
+          },
+          {
+            "type": "richtext",
+            "id": "desc_policy",
+            "label": "Description policy",
+            "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit eiusmod tempor</p>"
+          },
+          {
+            "type": "text",
+            "id": "tl",
+            "label": "Link text"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "class",
+            "label": "Class"
+          }
+        ]
+      },
+      {
+        "type": "block_customtab",
+        "name": "Block Custom Tab",
+        "settings": [
+          {
+            "type": "text",
+            "id": "custom_title",
+            "label": "Block title"
+          },
+          {
+            "type": "header",
+            "content": "Tab 1"
+          },
+          {
+            "type": "text",
+            "id": "t1",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "c1",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Tab 2"
+          },
+          {
+            "type": "text",
+            "id": "t2",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "c2",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Tab 3"
+          },
+          {
+            "type": "text",
+            "id": "t3",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "c3",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Tab 4"
+          },
+          {
+            "type": "text",
+            "id": "t4",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "c4",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Tab 5"
+          },
+          {
+            "type": "text",
+            "id": "t5",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "c5",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Tab 6"
+          },
+          {
+            "type": "text",
+            "id": "t6",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "c6",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Tab 7"
+          },
+          {
+            "type": "text",
+            "id": "t7",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "c7",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Tab 8"
+          },
+          {
+            "type": "text",
+            "id": "t8",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "c8",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Tab 9"
+          },
+          {
+            "type": "text",
+            "id": "t9",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "c9",
+            "label": "Content"
+          },
+          {
+            "type": "header",
+            "content": "Tab 10"
+          },
+          {
+            "type": "text",
+            "id": "t10",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "c10",
+            "label": "Content"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

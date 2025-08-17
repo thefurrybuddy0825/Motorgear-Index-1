@@ -1,0 +1,15 @@
+{%- liquid
+  assign optionCount = product.options | size
+  assign downcased_option = product.options_with_values[0].name | downcase
+  assign option_color_swatch = settings.option_color_swatch | downcase
+  assign available = product.variants.first.available
+  assign current_variant = product.selected_or_first_available_variant
+  assign swatchColor = false
+  if settings.use_color_swatch and optionCount == 1 and option_color_swatch contains downcased_option
+   assign swatchColor = true
+  endif
+-%}
+
+<div class="item-product-popup{% if swatchColor == true or product.has_only_default_variant %} hide{% endif %}">
+  {% render 'swatch-variants', product: product, id: id, position: position, sectionId: sectionId, available: available, current_variant: current_variant %}
+</div>

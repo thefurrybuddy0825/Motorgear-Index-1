@@ -1,0 +1,21 @@
+{%- form 'localization', id: id, class: 'nov-language' -%}
+  <div class="dropdown pointer">
+    <button type="button" class="dropdown-toggle w-100 text-capitalize d-flex align-items-center pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span>{{ localization.language.endonym_name | capitalize }}</span>
+      {% render 'bi_caret-down-fill' color: color %}
+    </button>
+    <div class="lang__list dropdown-menu dropdown-menu-right w-100" aria-labelledby="Language">
+      {%- for language in localization.available_languages -%}
+        <div class="lang__item font-500 text-uppercase pointer d-flex align-items-center{% if language.iso_code == localization.language.iso_code %} active{% endif %}" data-value="{{ language.iso_code }}">
+          {% assign flag_iconId = 'lang_flag_' | append: forloop.index %}
+          {% assign flag = settings[flag_iconId] %}
+          {% if flag != blank %}
+            <span class="flag-icon">{{ flag }}</span>
+          {% endif %}
+          {{ language.endonym_name | capitalize }}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+  <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+{%- endform -%}

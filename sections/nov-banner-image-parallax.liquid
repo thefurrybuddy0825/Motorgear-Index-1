@@ -1,0 +1,304 @@
+{% assign sst = section.settings %}
+{% style %}
+  {%- assign bg_image = sst.background_image -%}
+  #shopify-section-{{ section.id }}
+  .distance {
+    padding-top: {{ sst.distance_top_xs }}px;
+    padding-bottom: {{ sst.distance_bottom_xs }}px;
+    {% if sst.background_color != blank or bg_image != blank %}
+      background: {{ sst.background_color }}
+      {% if bg_image != blank %} url("{{ bg_image | img_url: '' }}") center{% endif %};
+      background-size: cover;
+    {% endif %}
+  }
+  @media(min-width: 768px) {
+    #shopify-section-{{ section.id }} .distance {
+      padding-top: {{ sst.distance_top_md }}px;
+      padding-bottom: {{ sst.distance_bottom_md }}px;
+    }
+  }
+  @media(min-width: 1200px) {
+    #shopify-section-{{ section.id }} .distance {
+      padding-top: {{ sst.distance_top_xl }}px;
+      padding-bottom: {{ sst.distance_bottom_xl }}px;
+    }
+  }
+  #shopify-section-{{ section.id }}
+  .gallery-image__item {
+    border-radius: {{ sst.bd_radius }}px;
+  }
+  #shopify-section-{{ section.id }}.gallery-image__item:not(:last-child) {
+    margin-right: {{ sst.spacing }}px;
+  }
+  #shopify-section-{{ section.id }}
+  .block__parallax {
+    background-image: url("{{ sst.image | img_url: '2480x' }}");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  #shopify-section-{{ section.id }} .countdownfree .item-time {
+    color:  {{ sst.c_cd }};
+    background-color: {{ sst.bg_cd }};
+    border-radius: {{ sst.border_radius }}px;
+  }
+{% endstyle %}
+
+<div class="color-{{ sst.color_section }}{% if sst.class != blank %} {{ sst.class }}{% endif %}{% if sst.animate %} wow fadeInUp animated{% endif %}">
+  <div class="overflow-hidden position-relative distance nov_block__parallax">
+    <div class="parallax-container">
+      <div class="block__parallax itemY_parallax"></div>
+    </div>
+    <div class="{{ sst.container }} position-relative">
+      <div class="content-text-parallax">
+        <div class="block-text position-absolute">
+            <div class="subheading mb-22" style="color: {{ sst.subheading_color }};">
+               {{ sst.subheading }}
+            </div>
+            <div class="heading mb-40" style="color: {{ sst.heading_color }};">
+               <h1>{{ sst.heading }}</h1>
+            </div>
+          {% if sst.countdown_timeend != blank %}
+            <div
+              class="countdownfree d-flex"
+              data-countdown="{{ sst.countdown_timeend }}"
+              data-show-days="{{ settings.show_day }}"
+              data-restart="{{ settings.restart }}"></div>
+          {% endif %}
+          {% if sst.btn != blank %}
+            <a href="{{ sst.btn_link }}" class="btn {{ sst.btn_type }} {{ sst.btn_size }} text-uppercase font-medium f_pr mt-42">{{ sst.btn }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Vinova Banner Parallax",
+    "class": "section-banner-image-parallax",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Vinova Banner Parallax"
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading color",
+        "default": "#222222"
+      },
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Sub heading",
+        "default": "<p>Subtitle from happy customers</p>"
+      },
+      {
+        "type": "color",
+        "id": "subheading_color",
+        "label": "Sub heading color",
+        "default": "#666666"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "header",
+        "content": "Countdown time"
+      },
+      {
+        "type": "text",
+        "id": "countdown_timeend",
+        "label": "Time end product",
+        "placeholder": "YYYY\/MM\/DD"
+      },
+      {
+        "type": "paragraph",
+        "content": "Format: 'Year\/Month\/Day'"
+      },
+      {
+        "type": "paragraph",
+        "content": "Example: '2022\/01\/30'"
+      },
+      {
+        "type": "range",
+        "id": "border_radius",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Border radius",
+        "default": 0
+      },
+      {
+        "type": "color",
+        "id": "c_cd",
+        "label": "Color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "bg_cd",
+        "label": "Background",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": "Button"
+      },
+      {
+        "type": "text",
+        "id": "btn",
+        "label": "Button",
+        "default": "Shop now"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "label": "Button link"
+      },
+      {
+        "type": "select",
+        "id": "btn_type",
+        "label": "Button type",
+        "default": "btn-primary",
+        "options": [
+          {
+            "value": "btn-primary",
+            "label": "Primary"
+          },
+          {
+            "value": "btn-secondary",
+            "label": "Secondary"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "btn_size",
+        "label": "Button size",
+        "default": "btn-normal",
+        "options": [
+          {
+            "value": "btn-normal",
+            "label": "Normal"
+          },
+          {
+            "value": "btn-medium",
+            "label": "Medium"
+          },
+          {
+            "value": "btn-large",
+            "label": "Large"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Design Option"
+      },
+      {
+        "type": "select",
+        "id": "container",
+        "label": "Container",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Container"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container fluid"
+          },
+          {
+            "value": "container-full",
+            "label": "Container full width"
+          }
+        ]
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_section",
+        "label": "Color section",
+        "default": "background-2"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Colors",
+        "default": "#ffffff"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "header",
+        "content": "Spacing top (px)"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_xl",
+        "label": "Large laptop",
+        "default": 30,
+        "info": "Breakpoint 1200px"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_md",
+        "label": "Tablet",
+        "default": 30,
+        "info": "Breakpoint 768px"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_xs",
+        "label": "Mobile",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "Spacing bottom (px)"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_xl",
+        "label": "Large laptop",
+        "default": 30,
+        "info": "Breakpoint 1200px"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_md",
+        "label": "Tablet",
+        "default": 30,
+        "info": "Breakpoint 768px"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_xs",
+        "label": "Mobile",
+        "default": 30
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Banner Parallax",
+        "category": "Promotional"
+      }
+    ]
+  }
+{% endschema %}

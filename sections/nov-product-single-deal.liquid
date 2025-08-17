@@ -1,0 +1,349 @@
+{%- assign sst = section.settings -%}
+{% style %}
+  {%- assign bg_image = sst.background_image -%}
+  #shopify-section-{{ section.id }}
+  .distance {
+    padding-top: {{ sst.distance_top_xs }}px;
+    padding-bottom: {{ sst.distance_bottom_xs }}px;
+    {% if sst.background_color != blank %}
+      background: {{ sst.background_color }};
+      background-size: cover;
+    {% endif %}
+    {% if sst.show_border %}
+      border: 1px solid{{ sst.border_color }};
+    {% endif %}
+  }
+  @media(min-width: 768px) {
+    #shopify-section-{{ section.id }} .distance {
+      padding-top: {{ sst.distance_top_md }}px;
+      padding-bottom: {{ sst.distance_bottom_md }}px;
+    }
+  }
+  @media(min-width: 1200px) {
+    #shopify-section-{{ section.id }} .distance {
+      padding-top: {{ sst.distance_top_xl }}px;
+      padding-bottom: {{ sst.distance_bottom_xl }}px;
+    }
+  }
+  {% if sst.countdown_timeend != blank %}
+    #shopify-section-{{ section.id }}
+    .countdownfree .item-time {
+      color: {{ sst.countdown_color }};
+      border: 4px solid {{ sst.countdown_bg }};
+    }
+  {% endif %}
+{% endstyle %}
+<div class="distance position-relative{% if sst.class != blank %} {{ sst.class }}{% endif %}{% if sst.animate %}wow fadeInUp animated{% endif %}">
+  <div class="{{ sst.container }}">
+    {% render 'heading-section' %}
+    <div class="product-single row no-gutters align-items-center position-relative">
+      {%- assign product = all_products[sst.product_handle] -%}
+      <div class="nov-product__single-info col-lg-6 col-12">
+        {% if sst.title != blank %}
+          <div class="title-deal text-uppercase">{{ sst.title }}</div>
+        {% endif %}
+        {% if product.title != blank %}
+          <a href="{{ product.url | within: collection }}" class="product-single__title c_h hover:c_df font-700 f_pr d-inline-block">{{ product.title }}</a>
+        {%  else %}
+          <a href="#" class="product-single__title c_h hover:c_df font-700 f_pr d-inline-block"> Product title</a>
+        {% endif %}
+
+        {%-  liquid
+          assign on_sale = false
+          if product.compare_at_price_min > product.price_min
+              assign on_sale = true
+          endif
+        -%}
+        <div class="price-box">
+          {% if on_sale %}
+              <div class="price-sale">
+                <span class="old-price" data-compare-price-grid>{{ product.variants[0].compare_at_price | money }}</span>
+                <span class="special-price" data-price-grid>{{ product.variants[0].price | money }}</span>
+              </div>
+              {% else %}
+                <div class="price-regular">
+                    <span data-price-grid>{{ product.variants[0].price | money }}</span>
+                </div>
+              {% endif %}
+          </div>
+          <div class="product-single__desc">{{ product.description | strip_html | truncate: 180 }}</div>
+
+        <a href="{{ product.url | within: collection | default: "#" }}" class="btn {{ sst.btn_type }} {{ sst.btn_size }} font-700">{{ sst.shop_now }}</a>
+        {% if sst.countdown_timeend != blank %}
+          <div
+            class="countdownfree d-flex mt-56"
+            data-countdown="{{ sst.countdown_timeend }}"
+            data-show-days="{{ settings.show_day }}"
+            data-restart="{{ settings.restart }}"></div>
+        {% endif %}
+      </div>
+      <div class="nov-product__single-thumb col-lg-6 col-12">
+        {% if sst.img_cover != blank %}
+          {%- assign imagealt = sst.img_cover.alt | default: 'icon-text' | strip_html | escape -%}
+              {{ sst.img_cover | image_url: width: 3840 | image_tag:
+                loading: 'lazy',
+                class: 'img-fluid',
+                alt: imagealt,
+                widths: '200, 320, 525, 768, 992, 1200, 1440, 1920, 2480, 3840'
+              }}
+        {% elsif product.featured_image != blank %}
+          <div class="product-single__photos">
+            {% assign img_url = product.featured_image %}
+            {%- assign imagealts = img_url.alt | default: product.title | strip_html | escape -%}
+            {{ img_url | image_url: width: 1920 | image_tag:
+              loading: 'lazy',
+              class: 'product__thumbnail img-fluid',
+              alt: imagealts,
+              widths: '200, 350, 525, 768, 992, 1200, 1440, 1920, 2480, 3840'
+            }}
+            {% for image in product.images %}
+              {% assign img_url = image.src %}
+              {% if forloop.first != true %}
+              {{ img_url | image_url: width: 1920 | image_tag:
+                  loading: 'lazy',
+                  class: 'product__thumbnail-second img-fluid',
+                  alt: imagealt,
+                  widths: '200, 350, 525, 768, 992, 1200, 1440, 1920'
+              }}
+              {% break %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% else %}
+          {{ 'product-apparel-1' | append: current | placeholder_svg_tag: 'placeholder-svg' | replace: '<svg', '<svg style="width: 600px; height: 600px;"' }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Product Single Deal",
+    "class": "section-product-single-deal",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "<p>Vinova Product Single Deal</p>"
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading color",
+        "default": "#222222"
+      },
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Sub heading",
+        "default": "<p>Subtitle from happy customers</p>"
+      },
+      {
+        "type": "color",
+        "id": "subheading_color",
+        "label": "Sub heading color",
+        "default": "#666666"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Deal of the day"
+      },
+      {
+        "type": "header",
+        "content": "Image cover"
+      },
+      {
+        "type": "image_picker",
+        "id": "img_cover",
+        "label": "Image cover"
+      },
+      {
+        "type": "header",
+        "content": "Product"
+      },
+      {
+        "type": "product",
+        "id": "product_handle",
+        "label": "Product"
+      },
+      {
+        "type": "header",
+        "content": "Countdown time"
+      },
+      {
+        "type": "text",
+        "id": "countdown_timeend",
+        "label": "Time end product",
+        "placeholder": "YYYY\/MM\/DD"
+      },
+      {
+        "type": "paragraph",
+        "content": "Format: 'Year\/Month\/Day'"
+      },
+      {
+        "type": "paragraph",
+        "content": "Example: '2022\/01\/30'"
+      },
+      {
+        "type": "color",
+        "id": "countdown_color",
+        "label": "Color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "countdown_bg",
+        "label": "Background",
+        "default": "#f0f0f0"
+      },
+      {
+        "type": "header",
+        "content": "Button shop now"
+      },
+      {
+         "type": "text",
+         "id": "shop_now",
+         "label": "Text Button",
+         "default": "Shop now"
+      },
+      {
+        "type": "select",
+        "id": "btn_type",
+        "label": "Button type",
+        "default": "btn-primary",
+        "options": [
+          {
+            "value": "btn-primary",
+            "label": "Primary"
+          },
+          {
+            "value": "btn-secondary",
+            "label": "Secondary"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "btn_size",
+        "label": "Button size",
+        "default": "btn-normal",
+        "options": [
+          {
+            "value": "btn-normal",
+            "label": "Normal"
+          },
+          {
+            "value": "btn-medium",
+            "label": "Medium"
+          },
+          {
+            "value": "btn-large",
+            "label": "Large"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Design options"
+      },
+      {
+        "type": "checkbox",
+        "id": "animate",
+        "label": "Show animated",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "container",
+        "label": "Container",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Container"
+          },
+          {
+            "value": "container-fluid",
+            "label": "Container fluid"
+          },
+          {
+            "value": "container-full",
+            "label": "Container full width"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background colors"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "type": "text",
+        "id": "class",
+        "label": "Class"
+      },
+      {
+        "type": "header",
+        "content": "Spacing top (px)"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_xl",
+        "label": "Large laptop",
+        "default": 30,
+        "info": "Breakpoint 1200px"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_md",
+        "label": "Tablet",
+        "default": 30,
+        "info": "Breakpoint 768px"
+      },
+      {
+        "type": "number",
+        "id": "distance_top_xs",
+        "label": "Mobile",
+        "default": 30
+      },
+      {
+        "type": "header",
+        "content": "Spacing bottom (px)"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_xl",
+        "label": "Large laptop",
+        "default": 30,
+        "info": "Breakpoint 1200px"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_md",
+        "label": "Tablet",
+        "default": 30,
+        "info": "Breakpoint 768px"
+      },
+      {
+        "type": "number",
+        "id": "distance_bottom_xs",
+        "label": "Mobile",
+        "default": 30
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vinova Product Single Deal",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}
