@@ -776,6 +776,14 @@
             "tab_title": "Food & Treats",
             "collection_handle": "new-arrivals-food-treats"
           }
+        },
+        "tabitem_i9Twzb": {
+          "type": "tabitem",
+          "name": "Clothing & Accessories",
+          "settings": {
+            "tab_title": "Clothing & Accessories",
+            "collection_handle": "new-arrivals-clothing-accessories"
+          }
         }
       },
       "block_order": [
@@ -786,7 +794,8 @@
         "tabitem_7GEFpy",
         "21510852-1727-4e0a-a49b-f6f77212f4c5",
         "ebaacd6e-ebf0-468f-a75e-6d19875a44b3",
-        "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3"
+        "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3",
+        "tabitem_i9Twzb"
       ],
       "name": "New Arrivals Tabs",
       "settings": {
