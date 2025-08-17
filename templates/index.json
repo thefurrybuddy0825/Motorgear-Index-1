@@ -498,6 +498,8 @@
         "template--16985813745883__3de901ce-9bed-45f8-b5ff-6730522b8288-image-1": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/banner2-1.webp",
+            "img_xs": "shopify://shop_images/banner2-1.webp",
             "link": "",
             "cta_label": "Racing boots",
             "cta_label_c": "#000000",
@@ -557,8 +559,10 @@
         "template--16985813745883__3de901ce-9bed-45f8-b5ff-6730522b8288-image-2": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/banner2-2.webp",
+            "img_xs": "shopify://shop_images/banner2-2.webp",
             "link": "",
-            "cta_label": "Fashion<span> helmet</span>",
+            "cta_label": "Fashion helmet",
             "cta_label_c": "#000000",
             "cta_label_span_c": "#ffa500",
             "cta_label_n_xxl": 30,
@@ -616,6 +620,8 @@
         "template--16985813745883__3de901ce-9bed-45f8-b5ff-6730522b8288-image-3": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/banner2-3.webp",
+            "img_xs": "shopify://shop_images/banner2-3.webp",
             "link": "",
             "cta_label": "genuine gloves",
             "cta_label_c": "#000000",
