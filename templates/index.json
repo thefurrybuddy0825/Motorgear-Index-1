@@ -943,6 +943,8 @@
         "template--16985813745883__af32cad4-237b-452b-a2e5-43d22f804941-quote-1": {
           "type": "quote",
           "settings": {
+            "avatar": "shopify://shop_images/bg-avarta-1.webp",
+            "bg_image_avatar": "shopify://shop_images/bg-avarta-1.webp",
             "star": 5,
             "name": "Luis Witlliams",
             "info": "",
@@ -952,6 +954,8 @@
         "template--16985813745883__af32cad4-237b-452b-a2e5-43d22f804941-quote-2": {
           "type": "quote",
           "settings": {
+            "avatar": "shopify://shop_images/bg-avarta-2.webp",
+            "bg_image_avatar": "shopify://shop_images/bg-avarta-2.webp",
             "star": 4,
             "name": "Mary Fields",
             "info": "",
@@ -961,6 +965,8 @@
         "template--16985813745883__af32cad4-237b-452b-a2e5-43d22f804941-quote-3": {
           "type": "quote",
           "settings": {
+            "avatar": "shopify://shop_images/bg-avarta-3.webp",
+            "bg_image_avatar": "shopify://shop_images/bg-avarta-3.webp",
             "star": 5,
             "name": "Alvin Johnson",
             "info": "",
@@ -970,6 +976,8 @@
         "fb73bf84-4af6-4762-959a-abc528ddc195": {
           "type": "quote",
           "settings": {
+            "avatar": "shopify://shop_images/bg-avarta-4.webp",
+            "bg_image_avatar": "shopify://shop_images/bg-avarta-4.webp",
             "star": 5,
             "name": "Christina M.",
             "info": "",
