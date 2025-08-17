@@ -445,6 +445,7 @@
               "address": "2357 Gordon Street, CA",
               "phone": "0123 456 789",
               "email": "demo@gmail.com",
+              "business_hours": "Monday - Sunday: 9:00 AM - 7:00 PM",
               "block_class": "",
               "grid_xxl": "col-xxl-3",
               "grid_xl": "col-xl-3",
