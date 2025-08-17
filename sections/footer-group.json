@@ -27,7 +27,7 @@
             "email": "support@thefurrybuddy.com",
             "business_hours": "Monday – Sunday: 9:00 AM – 7:00 PM",
             "block_class": "custom-f-w1 mb-lg-40",
-            "grid_xxl": "col-xxl-3",
+            "grid_xxl": "col-xxl-4",
             "grid_xl": "col-xl-4",
             "grid_lg": "col-lg-4",
             "grid_md": "col-md-4",
@@ -130,7 +130,7 @@
       "custom_css": [
         ".footer-subtitle {margin-bottom: 30px !important;}",
         ".mb-24 {margin-bottom: 10px !important;}",
-        ".footertop-item__icon{display: flex !important;}"
+        ".footertop-item__icon {display: flex !important;}"
       ],
       "settings": {
         "animate": true,
