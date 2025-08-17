@@ -745,11 +745,20 @@
             "collection_handle": "new-arrivals-small-pets"
           }
         },
+        "tabitem_7GEFpy": {
+          "type": "tabitem",
+          "name": "Beds & Mats",
+          "settings": {
+            "tab_title": "Beds & Mats",
+            "collection_handle": "new-arrivals-beds-mats"
+          }
+        },
         "21510852-1727-4e0a-a49b-f6f77212f4c5": {
           "type": "tabitem",
+          "name": "Beds & Comfort",
           "settings": {
             "tab_title": "Beds & Comfort",
-            "collection_handle": "new-arrivals"
+            "collection_handle": "new-arrivals-beds-comfort"
           }
         },
         "ebaacd6e-ebf0-468f-a75e-6d19875a44b3": {
@@ -772,6 +781,7 @@
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-2",
         "tabitem_JDELw9",
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-3",
+        "tabitem_7GEFpy",
         "21510852-1727-4e0a-a49b-f6f77212f4c5",
         "ebaacd6e-ebf0-468f-a75e-6d19875a44b3",
         "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3"
