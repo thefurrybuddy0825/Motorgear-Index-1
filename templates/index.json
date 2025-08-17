@@ -815,6 +815,8 @@
         "template--16985813745883__70ec355b-dedb-4ab6-982b-1aadf8417b56-image-2": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/banner2-4.webp",
+            "img_xs": "shopify://shop_images/banner2-4.webp",
             "link": "",
             "cta_label": "Embrace the Thrill of Motorbike Fashion",
             "cta_label_c": "#ffffff",
