@@ -161,7 +161,7 @@
     "enable_loadpage": false,
     "icon_loadpage": "shopify://shop_images/giphy.webp",
     "bg_loadpage": "#ffffff",
-    "show_fake_order": true,
+    "show_fake_order": false,
     "show_fake_order_inner_page": true,
     "fake_order_next_time": 6,
     "product_list_fake_order": [
