@@ -16,7 +16,7 @@
   <div class="nav-dropdown--lv1 megaMenu" style="{% if img_bg != blank %}background-image: url({{ img_bg | img_url: 'master' }});background-repeat: no-repeat;background-size: cover;{% endif %}">
     <div class="site-nav__mega--content row">
       {% if collection_enable %}
-        <div class="{{ collection_xl }} {{ collection_lg }} site--nav-collection mb-md-30">sssss
+        <div class="{{ collection_xl }} {{ collection_lg }} site--nav-collection mb-md-30">
           {% for i in (1..5) %}
             {%- assign name_collecId = 'name_collec_' | append: i -%}
             {%- assign linkId = 'link' | append: i -%}
