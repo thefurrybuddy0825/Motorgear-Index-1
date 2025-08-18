@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "purchase_action": "active",
-    "license": "86cc4ee1-a4a3-41fa-bc21-a61b1f032097",
+    "purchase_action": "remove",
+    "license": "",
     "container": 1520,
     "container_fluid": 100,
     "background_homepage": "#ffffff",
