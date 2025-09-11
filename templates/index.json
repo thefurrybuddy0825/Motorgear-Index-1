@@ -1203,23 +1203,33 @@
       "blocks": {
         "template--16985813745883__22bdb6b4-61fd-4137-8450-5b9adb97266b-image-1": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/gallery-3d1.webp"
+          }
         },
         "template--16985813745883__22bdb6b4-61fd-4137-8450-5b9adb97266b-image-2": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/gallery-3d2.webp"
+          }
         },
         "template--16985813745883__22bdb6b4-61fd-4137-8450-5b9adb97266b-image-5": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/bg-avarta-4.webp"
+          }
         },
         "template--16985813745883__22bdb6b4-61fd-4137-8450-5b9adb97266b-image-4": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/gallery-3d4.webp"
+          }
         },
         "template--16985813745883__22bdb6b4-61fd-4137-8450-5b9adb97266b-image-3": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/gallery-3d3.webp"
+          }
         }
       },
       "block_order": [
