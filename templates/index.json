@@ -1041,6 +1041,7 @@
         "heading_color_right": "#ffffff",
         "sub_heading_right": "GET 60% DISCOUNT",
         "sub_heading_color_right": "#ffa500",
+        "bg_newsletter": "shopify://shop_images/bg-newsletter_1920x_1b02c0df-da1d-4a79-8174-1229b1543148.webp",
         "animate": true,
         "container": "container",
         "background_color": "#ffffff",
