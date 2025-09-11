@@ -962,7 +962,7 @@
           "type": "quote",
           "settings": {
             "avatar": "shopify://shop_images/icon-avartar2.avif",
-            "bg_image_avatar": "shopify://shop_images/bg-avarta-3.webp",
+            "bg_image_avatar": "shopify://shop_images/image-blog10_447x250_crop_center_399a6664-c8d0-4149-a6f0-21a754481ab6.webp",
             "star": 5,
             "name": "Alvin Johnson",
             "info": "",
@@ -1024,7 +1024,7 @@
         "heading_color_left": "#000000",
         "sub_heading_left": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "sub_heading_color": "#8a8a8a",
-        "collection": "frontpage",
+        "collection": "best-sellers",
         "xxl": 3,
         "xl": 3,
         "lg": 2,
