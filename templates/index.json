@@ -1114,6 +1114,7 @@
         "template--16985813745883__232ed99a-92d9-4a31-866b-95881cc9289a-item_policy-1": {
           "type": "item_policy",
           "settings": {
+            "policy_icon": "shopify://shop_images/icon-policy-21.png",
             "title_policy": "Free Shipping",
             "desc_policy": "Delivering Value, Delivering Savings: Free Shipping on Every Order, Every Time",
             "mw": 360,
@@ -1123,6 +1124,7 @@
         "template--16985813745883__232ed99a-92d9-4a31-866b-95881cc9289a-item_policy-2": {
           "type": "item_policy",
           "settings": {
+            "policy_icon": "shopify://shop_images/icon-policy-22.png",
             "title_policy": "Return Policy",
             "desc_policy": "Shop with Confidence: Our Customer-Centric Return Policy Ensures",
             "mw": 360,
@@ -1132,6 +1134,7 @@
         "template--16985813745883__232ed99a-92d9-4a31-866b-95881cc9289a-item_policy-3": {
           "type": "item_policy",
           "settings": {
+            "policy_icon": "shopify://shop_images/icon-policy-23.png",
             "title_policy": "Payment Secured",
             "desc_policy": "Trustworthy Payment Solutions: Robust Protocols to Ensure Your Transactions",
             "mw": 360,
@@ -1141,6 +1144,7 @@
         "1addf7ac-dc4c-49be-a763-0174cab86dc7": {
           "type": "item_policy",
           "settings": {
+            "policy_icon": "shopify://shop_images/icon-policy-24.png",
             "title_policy": "Money Back Guarantee",
             "desc_policy": "We Stand by Our Promise: Our Money Back Guarantee Ensures Your Complete Delight",
             "mw": 360,
