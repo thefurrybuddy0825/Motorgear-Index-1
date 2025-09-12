@@ -91,13 +91,13 @@
             "link_4": "shopify://collections",
             "name_collec_5": "Limited-Time Offers",
             "link_5": "shopify://collections",
-            "product_enable": false,
+            "product_enable": true,
             "product_xl": "col-xl-4",
             "product_lg": "col-lg-4",
             "title_product": "Featured Product",
-            "product_1": "",
-            "product_2": "",
-            "product_3": "",
+            "product_1": "alpinestars-bionic-action-jacket",
+            "product_2": "38-51mm-double-air-outlet-exhaust-muffler",
+            "product_3": "alpinestars-suzuki-v2-jacket",
             "autoplay": true
           }
         },
