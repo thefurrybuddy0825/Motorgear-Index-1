@@ -754,8 +754,8 @@
         "e03de2c8-509e-44a5-8a9b-76262ac9cb48": {
           "type": "tabitem",
           "settings": {
-            "tab_title": "Knees Pad",
-            "collection_handle": "knees-pad"
+            "tab_title": "All",
+            "collection_handle": "new-arrivals"
           }
         }
       },
