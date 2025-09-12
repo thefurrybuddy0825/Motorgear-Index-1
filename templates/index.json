@@ -904,7 +904,7 @@
       "settings": {
         "heading_left": "TOP RATED",
         "heading_color_left": "#000000",
-        "collection_left": "boots",
+        "collection_left": "top-trending",
         "label_best_choice": "Best Choice",
         "label_color": "#ffa500",
         "limit_product_left": 6,
