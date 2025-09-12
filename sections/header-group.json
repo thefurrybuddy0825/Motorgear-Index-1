@@ -52,7 +52,7 @@
             "title": "Shop",
             "novmenu_item": "Shop",
             "desc": "",
-            "fw": true,
+            "fw": false,
             "novmenu_menu_enable": true,
             "show_title": true,
             "novmenu_xl": "col-xl-9",
