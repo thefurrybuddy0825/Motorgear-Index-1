@@ -559,7 +559,7 @@
           "settings": {
             "image": "shopify://shop_images/banner2-2.webp",
             "link": "",
-            "cta_label": "Fashion helmet",
+            "cta_label": "Fashion <span>helmet</span>",
             "cta_label_c": "#000000",
             "cta_label_span_c": "#ffa500",
             "cta_label_n_xxl": 30,
