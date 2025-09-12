@@ -999,7 +999,7 @@
         "sm": 1,
         "xs": 1,
         "spacing": 30,
-        "show_dots": false,
+        "show_dots": true,
         "s_star": true,
         "show_avatar": true,
         "show_icon": true,
