@@ -79,9 +79,9 @@
         "f5667244-e2c9-4448-a2fc-3fd5ba76801b": {
           "type": "block_menu",
           "settings": {
-            "block_title": "Support",
+            "block_title": "Policies",
             "h_t": false,
-            "menu_handle": "",
+            "menu_handle": "policies-footer-menu",
             "block_class": "custom-f-w2",
             "grid_xxl": "col-xxl-2",
             "grid_xl": "col-xl-2",
