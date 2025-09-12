@@ -163,9 +163,9 @@
       ],
       "settings": {
         "logo": "shopify://shop_images/THE_FURRY_BUDDY_LOGO_W.png",
-        "w_logo": 206,
-        "w_logo_lg": 150,
-        "w_logo_md": 150,
+        "w_logo": 150,
+        "w_logo_lg": 120,
+        "w_logo_md": 100,
         "logo_mobile": "shopify://shop_images/THE_FURRY_BUDDY_LOGO_B.png",
         "wm_logo": 100,
         "container": "container-full",
