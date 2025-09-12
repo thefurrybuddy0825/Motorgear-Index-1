@@ -105,6 +105,7 @@
             "social_color_footer": "#b0b0b0",
             "show_payment": true,
             "payment_title": "Payments",
+            "payment": "shopify://shop_images/footer-payment.avif",
             "block_class": "custom-f-w3 mt-sm-40",
             "grid_xxl": "col-xxl-3",
             "grid_xl": "col-xl-8",
