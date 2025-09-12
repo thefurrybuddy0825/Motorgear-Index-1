@@ -1168,7 +1168,7 @@
         "width_icon": 27,
         "height_icon": 22,
         "bg_i": true,
-        "bg_i_w": 60,
+        "bg_i_w": 64,
         "bg_icon": "#f3f3f3",
         "text_fz": 16,
         "desc_fz": 13,
