@@ -54,7 +54,7 @@
             "desc": "",
             "fw": true,
             "novmenu_menu_enable": true,
-            "show_title": true,
+            "show_title": false,
             "novmenu_xl": "col-xl-9",
             "novmenu_lg": "col-lg-9",
             "submenu_xl": "col-xl-4",
