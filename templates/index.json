@@ -782,7 +782,7 @@
         "xs": 2,
         "row_number": 2,
         "row_mobile": 2,
-        "limit": 12,
+        "limit": 30,
         "spacing": 30,
         "show_dot": true,
         "show_nav": true,
