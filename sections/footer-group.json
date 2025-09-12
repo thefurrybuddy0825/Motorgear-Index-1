@@ -41,9 +41,9 @@
         "f8be6a4f-de44-4752-b680-71b79285239b": {
           "type": "block_menu",
           "settings": {
-            "block_title": "Customer service",
+            "block_title": "Shop",
             "h_t": false,
-            "menu_handle": "",
+            "menu_handle": "shop",
             "block_class": "custom-f-w2",
             "grid_xxl": "col-xxl-2",
             "grid_xl": "col-xl-2",
