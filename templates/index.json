@@ -709,6 +709,13 @@
     "10923612-79e1-49d7-b0f3-69fe7c0df00c": {
       "type": "nov-collection-tabs",
       "blocks": {
+        "e03de2c8-509e-44a5-8a9b-76262ac9cb48": {
+          "type": "tabitem",
+          "settings": {
+            "tab_title": "All",
+            "collection_handle": "new-arrivals"
+          }
+        },
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-1": {
           "type": "tabitem",
           "settings": {
@@ -750,23 +757,16 @@
             "tab_title": "Travel & Outdoors",
             "collection_handle": "travel-outdoors"
           }
-        },
-        "e03de2c8-509e-44a5-8a9b-76262ac9cb48": {
-          "type": "tabitem",
-          "settings": {
-            "tab_title": "All",
-            "collection_handle": "new-arrivals"
-          }
         }
       },
       "block_order": [
+        "e03de2c8-509e-44a5-8a9b-76262ac9cb48",
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-1",
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-2",
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-3",
         "21510852-1727-4e0a-a49b-f6f77212f4c5",
         "ebaacd6e-ebf0-468f-a75e-6d19875a44b3",
-        "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3",
-        "e03de2c8-509e-44a5-8a9b-76262ac9cb48"
+        "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3"
       ],
       "settings": {
         "heading": "<p>new arrivals</p>",
