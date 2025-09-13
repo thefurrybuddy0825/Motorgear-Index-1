@@ -23,7 +23,7 @@
             "position_md_img": "width: 35%; left:0%; top: 50%; transform: translateY(-50%);",
             "position_sm_img": "width: 35%; left:0%; top: 50%; transform: translateY(-50%);",
             "position_xs_img": "width: 100%; left:0%; top: 50%; transform: translateY(-50%);",
-            "caption_1": "Helmets provide absolute",
+            "caption_1": "Take care",
             "color_cap1": "#ffffff",
             "fz_cap1_xxl": 48,
             "fz_cap1_xl": 38,
@@ -45,7 +45,7 @@
             "mb1_md": 0,
             "mb1_xs": 0,
             "cap_animate_1": "fadeInLeft",
-            "caption_2": "safety for you",
+            "caption_2": "of your pets",
             "color_cap2": "#ffa500",
             "fz_cap2_xxl": 48,
             "fz_cap2_xl": 38,
@@ -65,7 +65,7 @@
             "mb2_md": 15,
             "mb2_xs": 10,
             "cap_animate_2": "fadeInLeft",
-            "caption_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tores tempor incididunt uticare labore et dolore magna aliqua.",
+            "caption_3": "Your pet stays in a sitter's home or yours, whether<br>\nyou're traveling or just out for the day.",
             "color_cap3": "#e6e6e6",
             "fz_cap3_xxl": 14,
             "fz_cap3_xl": 14,
@@ -127,6 +127,7 @@
         },
         "6ad53700-a606-44b0-81d4-50d186a27fc1": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/slide2-3.webp",
             "img_xs": "shopify://shop_images/slide2-3.webp",
@@ -236,6 +237,7 @@
         },
         "bbd01082-da36-43ea-ad5e-73ca6f35a91e": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/slide2-1.webp",
             "img_xs": "shopify://shop_images/slide2-1.webp",
@@ -345,6 +347,7 @@
         },
         "3e896654-3b58-4354-aa3e-562d13917a72": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/slide2-4.webp",
             "img_xs": "shopify://shop_images/slide2-4.webp",
