@@ -990,7 +990,7 @@
       "settings": {
         "heading": "<p>TESTIMONIALS</p>",
         "heading_color": "#000000",
-        "subheading": "<p>What Our Happy Customers Are Saying!</p>",
+        "subheading": "<p>What Our Happy Customers Are Saying</p>",
         "subheading_color": "#8a8a8a",
         "heading_alignment": "text-center",
         "xl": 3,
@@ -1022,7 +1022,7 @@
       "settings": {
         "heading_left": "BEST SELLER",
         "heading_color_left": "#000000",
-        "sub_heading_left": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "sub_heading_left": "Customer Favorites That Sell Out Fast",
         "sub_heading_color": "#8a8a8a",
         "collection": "best-sellers",
         "xxl": 3,
