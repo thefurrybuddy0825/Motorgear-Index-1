@@ -747,15 +747,15 @@
         "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3": {
           "type": "tabitem",
           "settings": {
-            "tab_title": "boots",
-            "collection_handle": "boots"
+            "tab_title": "Grooming & Care",
+            "collection_handle": "toys-interactive-1"
           }
         },
         "e03de2c8-509e-44a5-8a9b-76262ac9cb48": {
           "type": "tabitem",
           "settings": {
-            "tab_title": "Knees Pad",
-            "collection_handle": "knees-pad"
+            "tab_title": "Feeding & Bowls",
+            "collection_handle": "feeding-bowls"
           }
         }
       },
