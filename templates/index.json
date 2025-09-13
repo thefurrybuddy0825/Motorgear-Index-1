@@ -15,7 +15,8 @@
         "348f9a99-988c-46d4-beed-d9a0d118a550": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/slideshow_15.png",
+            "image": "shopify://shop_images/slideshow_1.png",
+            "img_xs": "shopify://shop_images/slideshow_1.png",
             "img_animate": true,
             "position_img": "width: 35%; left:0%; top: 50%; transform: translateY(-50%);",
             "position_xl_img": "width: 35%; left:0%; top: 50%; transform: translateY(-50%);",
