@@ -707,6 +707,63 @@
         "distance_bottom_xs": 30
       }
     },
+    "nov_link_list_mTAmwh": {
+      "type": "nov-link-list",
+      "blocks": {
+        "featured_collection_bQTJXc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "title": ""
+          }
+        },
+        "featured_collection_BTpVHT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "title": ""
+          }
+        },
+        "featured_collection_L7n8X3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_bQTJXc",
+        "featured_collection_BTpVHT",
+        "featured_collection_L7n8X3"
+      ],
+      "name": "Vinova Link List",
+      "settings": {
+        "heading": "<p>Vinova Link List</p>",
+        "heading_c": "#222222",
+        "subheading": "<p>Subtitle from happy customers</p>",
+        "subheading_c": "#666666",
+        "title_alignment": "text-left",
+        "border_radius": 0,
+        "color_link": "#666666",
+        "color_link_h": "#222222",
+        "fz_link": 16,
+        "text_c": "#666666",
+        "fz_text": 13,
+        "background_i": "#f3f3f3",
+        "background_i_h": "#f3f3f3",
+        "grid_number": 3,
+        "grid_number_lg": 3,
+        "grid_number_md": 3,
+        "grid_number_sm": 2,
+        "grid_number_xs": 1,
+        "container": "container",
+        "background_color": "#ffffff",
+        "class": "",
+        "distance_top": 30,
+        "distance_bottom": 30
+      }
+    },
     "10923612-79e1-49d7-b0f3-69fe7c0df00c": {
       "type": "nov-collection-tabs",
       "blocks": {
@@ -1262,6 +1319,7 @@
   "order": [
     "40e14247-a415-4764-81be-2e93acba4cf5",
     "3de901ce-9bed-45f8-b5ff-6730522b8288",
+    "nov_link_list_mTAmwh",
     "10923612-79e1-49d7-b0f3-69fe7c0df00c",
     "70ec355b-dedb-4ab6-982b-1aadf8417b56",
     "a25ef6a3-3266-45ae-9971-fd7e024c2d0d",
