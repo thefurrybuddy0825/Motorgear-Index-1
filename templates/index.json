@@ -710,24 +710,24 @@
     "nov_link_list_mTAmwh": {
       "type": "nov-link-list",
       "blocks": {
-        "featured_collection_bQTJXc": {
+        "featured_collection_B6KzgV": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "",
             "title": "Food bowls"
           }
         },
-        "featured_collection_BTpVHT": {
+        "featured_collection_nQFTbU": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "",
             "title": "Pet beds"
           }
         },
-        "featured_collection_L7n8X3": {
+        "featured_collection_reKWeB": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "",
             "title": "Costumes"
           }
         },
@@ -754,9 +754,9 @@
         }
       },
       "block_order": [
-        "featured_collection_bQTJXc",
-        "featured_collection_BTpVHT",
-        "featured_collection_L7n8X3",
+        "featured_collection_B6KzgV",
+        "featured_collection_nQFTbU",
+        "featured_collection_reKWeB",
         "featured_collection_wRWYk6",
         "featured_collection_MBccG3",
         "featured_collection_EKPBCe"
@@ -776,8 +776,8 @@
         "fz_text": 13,
         "background_i": "#f3f3f3",
         "background_i_h": "#f3f3f3",
-        "grid_number": 3,
-        "grid_number_lg": 3,
+        "grid_number": 6,
+        "grid_number_lg": 6,
         "grid_number_md": 3,
         "grid_number_sm": 2,
         "grid_number_xs": 1,
