@@ -127,7 +127,6 @@
         },
         "6ad53700-a606-44b0-81d4-50d186a27fc1": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/slide2-3.webp",
             "img_xs": "shopify://shop_images/slide2-3.webp",
