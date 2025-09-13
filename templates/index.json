@@ -714,36 +714,60 @@
           "type": "featured_collection",
           "settings": {
             "collection": "frontpage",
-            "title": ""
+            "title": "Food bowls"
           }
         },
         "featured_collection_BTpVHT": {
           "type": "featured_collection",
           "settings": {
             "collection": "frontpage",
-            "title": ""
+            "title": "Pet beds"
           }
         },
         "featured_collection_L7n8X3": {
           "type": "featured_collection",
           "settings": {
             "collection": "frontpage",
-            "title": ""
+            "title": "Costumes"
+          }
+        },
+        "featured_collection_wRWYk6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "title": "Pet toys"
+          }
+        },
+        "featured_collection_MBccG3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "title": "Clothing"
+          }
+        },
+        "featured_collection_EKPBCe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "title": "Grooming"
           }
         }
       },
       "block_order": [
         "featured_collection_bQTJXc",
         "featured_collection_BTpVHT",
-        "featured_collection_L7n8X3"
+        "featured_collection_L7n8X3",
+        "featured_collection_wRWYk6",
+        "featured_collection_MBccG3",
+        "featured_collection_EKPBCe"
       ],
       "name": "Vinova Link List",
       "settings": {
-        "heading": "<p>Vinova Link List</p>",
+        "heading": "<p>Shop by Category</p>",
         "heading_c": "#222222",
-        "subheading": "<p>Subtitle from happy customers</p>",
+        "subheading": "",
         "subheading_c": "#666666",
-        "title_alignment": "text-left",
+        "title_alignment": "text-center",
         "border_radius": 0,
         "color_link": "#666666",
         "color_link_h": "#222222",
