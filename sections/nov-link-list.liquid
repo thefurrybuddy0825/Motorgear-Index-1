@@ -1,8 +1,7 @@
 {% assign sst = section.settings %}
 <div
-  class="distance{% if sst.class != blank %} {{ sst.class }}{% endif %}{% if sst.animate == true %} wow fadeInUp animated{% endif %}"
   data-section-id="{{ section.id }}"
-  data-section-type="nov-slick"
+  class="distance position-relative color-{{ sst.color_section }}{% if sst.class != blank %} {{ sst.class }}{% endif %}{% if sst.animate == true %} wow fadeInUp animated{% endif %}"
 >
   <div class="{{ sst.container }}">
     {% render 'heading-section', class: 'mb-23' %}
