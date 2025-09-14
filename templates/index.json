@@ -769,7 +769,7 @@
         "subheading": "",
         "subheading_c": "#666666",
         "heading_alignment": "text-center",
-        "border_radius": 9,
+        "border_radius": 0,
         "color_link": "#666666",
         "color_link_h": "#222222",
         "fz_link": 16,
