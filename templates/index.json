@@ -461,7 +461,7 @@
         "3e896654-3b58-4354-aa3e-562d13917a72"
       ],
       "settings": {
-        "autoplay": true,
+        "autoplay": false,
         "zoom": false,
         "autoplay_speed": "4000",
         "enable_mh": true,
