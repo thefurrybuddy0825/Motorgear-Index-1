@@ -552,7 +552,7 @@
         "heading_c": "#222222",
         "subheading": "",
         "subheading_c": "#666666",
-        "title_alignment": "text-center",
+        "heading_alignment": "text-center",
         "border_radius": 0,
         "color_link": "#666666",
         "color_link_h": "#222222",
@@ -570,7 +570,8 @@
         "background_color": "#ffffff",
         "class": "",
         "distance_top": 30,
-        "distance_bottom": 30
+        "distance_bottom": 30,
+        "animate": false
       }
     },
     "3de901ce-9bed-45f8-b5ff-6730522b8288": {
@@ -1041,7 +1042,7 @@
         "heading_c": "#222222",
         "subheading": "",
         "subheading_c": "#666666",
-        "title_alignment": "text-center",
+        "heading_alignment": "text-left",
         "border_radius": 0,
         "color_link": "#666666",
         "color_link_h": "#222222",
@@ -1059,7 +1060,8 @@
         "background_color": "#ffffff",
         "class": "",
         "distance_top": 30,
-        "distance_bottom": 30
+        "distance_bottom": 30,
+        "animate": false
       }
     },
     "a25ef6a3-3266-45ae-9971-fd7e024c2d0d": {
