@@ -981,6 +981,63 @@
         "distance_bottom_xs": 30
       }
     },
+    "nov_link_list_Hdh7qF": {
+      "type": "nov-link-list",
+      "blocks": {
+        "featured_collection_xr3Hjt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "title": ""
+          }
+        },
+        "featured_collection_UkqKQg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "title": ""
+          }
+        },
+        "featured_collection_qxf4Tb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "frontpage",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_xr3Hjt",
+        "featured_collection_UkqKQg",
+        "featured_collection_qxf4Tb"
+      ],
+      "name": "Vinova Link List",
+      "settings": {
+        "heading": "<h2>Shop by pet type</h2>",
+        "heading_c": "#222222",
+        "subheading": "",
+        "subheading_c": "#666666",
+        "title_alignment": "text-center",
+        "border_radius": 0,
+        "color_link": "#666666",
+        "color_link_h": "#222222",
+        "fz_link": 16,
+        "text_c": "#666666",
+        "fz_text": 13,
+        "background_i": "#f3f3f3",
+        "background_i_h": "#f3f3f3",
+        "grid_number": 3,
+        "grid_number_lg": 3,
+        "grid_number_md": 3,
+        "grid_number_sm": 2,
+        "grid_number_xs": 1,
+        "container": "container",
+        "background_color": "#ffffff",
+        "class": "",
+        "distance_top": 30,
+        "distance_bottom": 30
+      }
+    },
     "a25ef6a3-3266-45ae-9971-fd7e024c2d0d": {
       "type": "nov-product-special",
       "settings": {
@@ -1346,6 +1403,7 @@
     "3de901ce-9bed-45f8-b5ff-6730522b8288",
     "10923612-79e1-49d7-b0f3-69fe7c0df00c",
     "70ec355b-dedb-4ab6-982b-1aadf8417b56",
+    "nov_link_list_Hdh7qF",
     "a25ef6a3-3266-45ae-9971-fd7e024c2d0d",
     "af32cad4-237b-452b-a2e5-43d22f804941",
     "f1614320-93fc-45d4-8442-0d085a2b75db",
