@@ -984,32 +984,56 @@
     "nov_link_list_Hdh7qF": {
       "type": "nov-link-list",
       "blocks": {
-        "featured_collection_xr3Hjt": {
+        "featured_collection_aKDFWh": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "",
             "title": ""
           }
         },
-        "featured_collection_UkqKQg": {
+        "featured_collection_VKwr6E": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "",
             "title": ""
           }
         },
-        "featured_collection_qxf4Tb": {
+        "featured_collection_xdD7fq": {
           "type": "featured_collection",
           "settings": {
-            "collection": "frontpage",
+            "collection": "",
+            "title": ""
+          }
+        },
+        "featured_collection_xMeUhr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "featured_collection_7RbRFa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "featured_collection_zdgKnz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
             "title": ""
           }
         }
       },
       "block_order": [
-        "featured_collection_xr3Hjt",
-        "featured_collection_UkqKQg",
-        "featured_collection_qxf4Tb"
+        "featured_collection_aKDFWh",
+        "featured_collection_VKwr6E",
+        "featured_collection_xdD7fq",
+        "featured_collection_xMeUhr",
+        "featured_collection_7RbRFa",
+        "featured_collection_zdgKnz"
       ],
       "name": "Vinova Link List",
       "settings": {
@@ -1026,8 +1050,8 @@
         "fz_text": 13,
         "background_i": "#f3f3f3",
         "background_i_h": "#f3f3f3",
-        "grid_number": 3,
-        "grid_number_lg": 3,
+        "grid_number": 6,
+        "grid_number_lg": 6,
         "grid_number_md": 3,
         "grid_number_sm": 2,
         "grid_number_xs": 1,
