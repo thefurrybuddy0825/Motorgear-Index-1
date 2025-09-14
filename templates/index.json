@@ -460,8 +460,11 @@
         "bbd01082-da36-43ea-ad5e-73ca6f35a91e",
         "3e896654-3b58-4354-aa3e-562d13917a72"
       ],
+      "custom_css": [
+        ".section-slideshow .main-slider-navfor .slick-list .slick-slide.slick-current img {}"
+      ],
       "settings": {
-        "autoplay": false,
+        "autoplay": true,
         "zoom": false,
         "autoplay_speed": "4000",
         "enable_mh": true,
