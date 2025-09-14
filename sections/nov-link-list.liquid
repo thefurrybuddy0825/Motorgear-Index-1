@@ -1,27 +1,25 @@
 {% assign sst = section.settings %}
-<div class="distance{% if sst.class != blank %} {{ sst.class }}{% endif %}{% if sst.animate == true %} wow fadeInUp animated{% endif %}" data-section-id="{{ section.id }}" data-section-type="nov-slick">
-  {% if sst.container == 'container' %}
-    <div class="container">
-  {% elsif sst.container == 'container-fluid' %}
-    <div class="container-fluid">
-  {% else %}
-    <div class="container-full">
-  {% endif %}
+<div
+  class="distance{% if sst.class != blank %} {{ sst.class }}{% endif %}{% if sst.animate == true %} wow fadeInUp animated{% endif %}"
+  data-section-id="{{ section.id }}"
+  data-section-type="nov-slick"
+>
+  <div class="{{ sst.container }}">
+    {% render 'heading-section', class: 'mb-23' %}
 
-{% render 'heading-section', class: 'mb-23' %}
-
-    <div class="row nov-slick-carousel"
-      data-autoplay="false" 
-      data-autoplayTimeout="6000" 
+    <div
+      class="row nov-slick-carousel"
+      data-autoplay="false"
+      data-autoplayTimeout="6000"
       data-loop="false"
       data-nav="false"
-      data-items="{{ sst.grid_number }}" 
-      data-items_lg="{{ sst.grid_number_lg }}" 
-      data-items_md="{{ sst.grid_number_md }}" 
+      data-items="{{ sst.grid_number }}"
+      data-items_lg="{{ sst.grid_number_lg }}"
+      data-items_md="{{ sst.grid_number_md }}"
       data-items_sm="{{ sst.grid_number_sm }}"
       data-items_xs="{{ sst.grid_number_xs }}"
-      data-unslick="true">
-
+      data-unslick="true"
+    >
       {% for block in section.blocks %}
         {% assign bst = block.settings %}
         {% assign collection = collections[bst.collection] %}
@@ -30,14 +28,20 @@
         <div class="col">
           <div class="block_content text-center">
             <div class="b_img position-relative{% if bst.image_h != blank %} h_img_h{% else %} n_img_h{% endif %}">
-              <a href="{{ link_url }}" class="d-block" aria-label="{{ bst.title | default: collection.title | escape }}">
+              <a
+                href="{{ link_url }}"
+                class="d-block"
+                aria-label="{{ bst.title | default: collection.title | escape }}"
+              >
                 {% if bst.image != blank %}
                   <img
                     class="img d-inline-block"
                     src="{{ bst.image | img_url: '200x' }}"
                     alt="{{ bst.title | default: collection.title | escape }}"
                     loading="lazy"
-                    width="200" height="200">
+                    width="200"
+                    height="200"
+                  >
                 {% else %}
                   {%- capture current -%}{% cycle 1, 2, 3, 4 %}{%- endcapture -%}
                   {{ 'collection-apparel-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
@@ -49,7 +53,9 @@
                     src="{{ bst.image_h | img_url: '200x' }}"
                     alt="{{ bst.title | default: collection.title | escape }}"
                     loading="lazy"
-                    width="200" height="200">
+                    width="200"
+                    height="200"
+                  >
                 {% endif %}
 
                 {% if sst.icon_h != blank %}
@@ -58,7 +64,9 @@
                     src="{{ sst.icon_h | img_url: '50x' }}"
                     alt=""
                     loading="lazy"
-                    width="50" height="50">
+                    width="50"
+                    height="50"
+                  >
                 {% endif %}
               </a>
             </div>
