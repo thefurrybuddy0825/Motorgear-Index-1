@@ -7,7 +7,7 @@
   {% else %}
     <div class="container-full">
   {% endif %}
-    {% if sst.heading != blank or sst.subheading != blank %}
+    {% comment %} {% if sst.heading != blank or sst.subheading != blank %}
       <div class="title_section {{ sst.title_alignment }}">
         {% if sst.heading != blank %}
           <span class="title" style="color: {{ sst.heading_c }};">{{ sst.heading }}</span>
@@ -16,7 +16,8 @@
           <span class="sub_title" style="color: {{ sst.subheading_c }};">{{ sst.subheading }}</span>
         {% endif %}
       </div>
-    {% endif %}
+    {% endif %} {% endcomment %}
+     {% render 'heading-section', class: 'mb-23' %}
     <div class="row nov-slick-carousel"
       data-autoplay="false" 
       data-autoplayTimeout="6000" 
