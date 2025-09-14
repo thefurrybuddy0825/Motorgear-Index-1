@@ -713,6 +713,7 @@
         "featured_collection_B6KzgV": {
           "type": "featured_collection",
           "settings": {
+            "image": "shopify://shop_images/demo-pets-img-01.avif",
             "collection": "",
             "title": "Food Bowls"
           }
