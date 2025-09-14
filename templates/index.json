@@ -463,7 +463,7 @@
       "custom_css": [],
       "settings": {
         "autoplay": false,
-        "zoom": false,
+        "zoom": true,
         "autoplay_speed": "4000",
         "enable_mh": true,
         "mh": 900,
