@@ -707,90 +707,6 @@
         "distance_bottom_xs": 30
       }
     },
-    "nov_link_list_mTAmwh": {
-      "type": "nov-link-list",
-      "blocks": {
-        "featured_collection_B6KzgV": {
-          "type": "featured_collection",
-          "settings": {
-            "image": "shopify://shop_images/T-Shirt_200x_e23d787f-5cfb-47d2-b8e8-4307c5b970e2.avif",
-            "collection": "",
-            "title": "Food Bowls"
-          }
-        },
-        "featured_collection_nQFTbU": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": "Pet beds"
-          }
-        },
-        "featured_collection_reKWeB": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": "Costumes"
-          }
-        },
-        "featured_collection_wRWYk6": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": "Pet toys"
-          }
-        },
-        "featured_collection_MBccG3": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": "Clothing"
-          }
-        },
-        "featured_collection_EKPBCe": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": "Grooming"
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_B6KzgV",
-        "featured_collection_nQFTbU",
-        "featured_collection_reKWeB",
-        "featured_collection_wRWYk6",
-        "featured_collection_MBccG3",
-        "featured_collection_EKPBCe"
-      ],
-      "name": "Vinova Link List",
-      "settings": {
-        "heading": "<p>shop by category</p>",
-        "heading_c": "#222222",
-        "subheading": "",
-        "subheading_c": "#666666",
-        "heading_alignment": "text-center",
-        "border_radius": 0,
-        "color_link": "#666666",
-        "color_link_h": "#222222",
-        "fz_link": 16,
-        "text_c": "#666666",
-        "fz_text": 13,
-        "background_i": "#f3f3f3",
-        "background_i_h": "#f3f3f3",
-        "icon_h": "shopify://shop_images/shopping-bag-7.png",
-        "grid_number": 6,
-        "grid_number_lg": 6,
-        "grid_number_md": 3,
-        "grid_number_sm": 2,
-        "grid_number_xs": 1,
-        "container": "container",
-        "background_color": "#ffffff",
-        "class": "",
-        "distance_top": 30,
-        "distance_bottom": 30,
-        "animate": true
-      }
-    },
     "10923612-79e1-49d7-b0f3-69fe7c0df00c": {
       "type": "nov-collection-tabs",
       "blocks": {
@@ -982,88 +898,6 @@
         "distance_bottom_xl": 60,
         "distance_bottom_md": 30,
         "distance_bottom_xs": 30
-      }
-    },
-    "nov_link_list_Hdh7qF": {
-      "type": "nov-link-list",
-      "blocks": {
-        "featured_collection_aKDFWh": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": ""
-          }
-        },
-        "featured_collection_VKwr6E": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": ""
-          }
-        },
-        "featured_collection_xdD7fq": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": ""
-          }
-        },
-        "featured_collection_xMeUhr": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": ""
-          }
-        },
-        "featured_collection_7RbRFa": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": ""
-          }
-        },
-        "featured_collection_zdgKnz": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "title": ""
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_aKDFWh",
-        "featured_collection_VKwr6E",
-        "featured_collection_xdD7fq",
-        "featured_collection_xMeUhr",
-        "featured_collection_7RbRFa",
-        "featured_collection_zdgKnz"
-      ],
-      "name": "Vinova Link List",
-      "settings": {
-        "heading": "<h2>Shop by pet type</h2>",
-        "heading_c": "#222222",
-        "subheading": "",
-        "subheading_c": "#666666",
-        "heading_alignment": "text-left",
-        "border_radius": 0,
-        "color_link": "#666666",
-        "color_link_h": "#222222",
-        "fz_link": 16,
-        "text_c": "#666666",
-        "fz_text": 13,
-        "background_i": "#f3f3f3",
-        "background_i_h": "#f3f3f3",
-        "grid_number": 6,
-        "grid_number_lg": 6,
-        "grid_number_md": 3,
-        "grid_number_sm": 2,
-        "grid_number_xs": 1,
-        "container": "container",
-        "background_color": "#ffffff",
-        "class": "",
-        "distance_top": 30,
-        "distance_bottom": 30,
-        "animate": false
       }
     },
     "a25ef6a3-3266-45ae-9971-fd7e024c2d0d": {
@@ -1428,10 +1262,8 @@
   "order": [
     "40e14247-a415-4764-81be-2e93acba4cf5",
     "3de901ce-9bed-45f8-b5ff-6730522b8288",
-    "nov_link_list_mTAmwh",
     "10923612-79e1-49d7-b0f3-69fe7c0df00c",
     "70ec355b-dedb-4ab6-982b-1aadf8417b56",
-    "nov_link_list_Hdh7qF",
     "a25ef6a3-3266-45ae-9971-fd7e024c2d0d",
     "af32cad4-237b-452b-a2e5-43d22f804941",
     "f1614320-93fc-45d4-8442-0d085a2b75db",
