@@ -9,32 +9,12 @@
   {% endif %}
     {% if sst.heading != blank or sst.subheading != blank %}
       <div class="title_section {{ sst.title_alignment }}">
-        {% if section.settings.heading != blank or section.settings.subheading != blank %}
-  <div class="title_section {{ section.settings.heading_alignment }}{% if class != blank %} {{ class }}{% endif %}{% if subtop %} subtop{% endif %}">
-    {% if subtop %}
-      {% if section.settings.subheading != blank %}
-        <div class="sub_title mb-15" style="color: {{ section.settings.subheading_color }}">{{ section.settings.subheading }}</div>
-      {% endif %}
-      {% if section.settings.heading != blank %}
-        <h2 class="title" style="color: {{ section.settings.heading_color }}">{{ section.settings.heading }}</h2>
-      {% endif %}
-      {% if section.settings.desc != blank %}
-        <div class="desc" style="color: {{ section.settings.desc_color }}">{{ section.settings.desc }}</div>
-      {% endif %}
-    {% else %}
-      {% if section.settings.heading != blank %}
-        <h2 class="title" style="color: {{ section.settings.heading_color }}">{{ section.settings.heading }}</h2>
-      {% endif %}
-      {% if section.settings.subheading != blank %}
-        <div class="sub_title" style="color: {{ section.settings.subheading_color }}">{{ section.settings.subheading }}</div>
-      {% endif %}
-      {% if section.settings.desc != blank %}
-        <div class="desc" style="color: {{ section.settings.desc_color }}">{{ section.settings.desc }}</div>
-      {% endif %}
-    {% endif %}
-  </div>
-{% endif %}
-
+        {% if sst.heading != blank %}
+          <span class="title" style="color: {{ sst.heading_c }};">{{ sst.heading }}</span>
+        {% endif %}
+        {% if sst.subheading != blank %}
+          <span class="sub_title" style="color: {{ sst.subheading_c }};">{{ sst.subheading }}</span>
+        {% endif %}
       </div>
     {% endif %}
     <div class="row nov-slick-carousel"
