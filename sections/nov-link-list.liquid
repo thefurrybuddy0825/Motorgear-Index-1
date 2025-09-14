@@ -66,12 +66,6 @@
             <a href="{{ link_url }}" class="name_item d-block position-relative font-700 mt-15">
               {{ bst.title | default: collection.title | escape }}
             </a>
-
-            {% if collection and collection.products_count > 0 %}
-              <div class="sub_text mt-5">
-                {{ collection.products_count }}&nbsp;{{ 'sections.link_list.product' | t }}
-              </div>
-            {% endif %}
           </div>
         </div>
       {% endfor %}
