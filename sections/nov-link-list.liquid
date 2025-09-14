@@ -8,16 +8,7 @@
     <div class="container-full">
   {% endif %}
 
-    {% if sst.heading != blank or sst.subheading != blank %}
-      <div class="title_section {{ sst.title_alignment }}">
-        {% if sst.heading != blank %}
-          <div class="title" style="color: {{ sst.heading_c }};">{{ sst.heading }}</div>
-        {% endif %}
-        {% if sst.subheading != blank %}
-          <div class="sub_title" style="color: {{ sst.subheading_c }};">{{ sst.subheading }}</div>
-        {% endif %}
-      </div>
-    {% endif %}
+{% render 'heading-section', class: 'mb-23' %}
 
     <div class="row nov-slick-carousel"
       data-autoplay="false" 
