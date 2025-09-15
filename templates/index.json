@@ -348,8 +348,8 @@
         "3e896654-3b58-4354-aa3e-562d13917a72": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/slide2-4.webp",
-            "img_xs": "shopify://shop_images/slide2-4.webp",
+            "image": "shopify://shop_images/slide2-1-4.png",
+            "img_xs": "shopify://shop_images/slide2-1-4.png",
             "img_animate": true,
             "position_img": "width: 70%; left:10%; top: 40%",
             "position_xl_img": "width: 70%; left:10%; top: 50%",
