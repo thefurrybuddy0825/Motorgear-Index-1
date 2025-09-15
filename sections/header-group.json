@@ -91,7 +91,7 @@
             "link_4": "",
             "name_collec_5": "",
             "link_5": "",
-            "product_enable": true,
+            "product_enable": false,
             "product_xl": "col-xl-2",
             "product_lg": "col-lg-2",
             "title_product": "Featured Products",
