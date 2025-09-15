@@ -720,14 +720,14 @@
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-3": {
           "type": "tabitem",
           "settings": {
-            "tab_title": "Dogs",
+            "tab_title": "Beds",
             "collection_handle": "dogs"
           }
         },
         "21510852-1727-4e0a-a49b-f6f77212f4c5": {
           "type": "tabitem",
           "settings": {
-            "tab_title": "Cats",
+            "tab_title": "Clothing",
             "collection_handle": "cats"
           }
         },
