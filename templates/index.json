@@ -462,9 +462,9 @@
       ],
       "custom_css": [],
       "settings": {
-        "autoplay": false,
+        "autoplay": true,
         "zoom": false,
-        "autoplay_speed": "4000",
+        "autoplay_speed": "10000",
         "enable_mh": true,
         "mh": 900,
         "h_xs": 270,
