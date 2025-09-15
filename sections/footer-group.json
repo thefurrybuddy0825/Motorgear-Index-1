@@ -97,6 +97,7 @@
         },
         "f5667244-e2c9-4448-a2fc-3fd5ba76801b": {
           "type": "block_menu",
+          "disabled": true,
           "settings": {
             "block_title": "Policies",
             "h_t": false,
