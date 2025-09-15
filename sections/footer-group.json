@@ -149,7 +149,7 @@
       ],
       "settings": {
         "animate": true,
-        "container": "container",
+        "container": "container-full",
         "color_section": "",
         "background_color": "",
         "copyright": "Copyright © 2025 The Furry Buddy™. All rights reserved.",
