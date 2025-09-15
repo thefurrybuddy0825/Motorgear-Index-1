@@ -57,6 +57,25 @@
             "distance_bottom_xs": 30
           }
         },
+        "block_menu_FyW6jF": {
+          "type": "block_menu",
+          "settings": {
+            "block_title": "Categories",
+            "h_t": false,
+            "menu_handle": "categories-footer-menu",
+            "block_class": "custom-f-w2",
+            "grid_xxl": "col-xxl-2",
+            "grid_xl": "col-xl-2",
+            "grid_lg": "col-lg-2",
+            "grid_md": "col-md-2",
+            "grid_sm": "col-sm-2",
+            "distance_bottom_xxl": 30,
+            "distance_bottom_xl": 30,
+            "distance_bottom_lg": 30,
+            "distance_bottom_md": 30,
+            "distance_bottom_xs": 30
+          }
+        },
         "aaf933ac-3238-4880-a8cd-d0b1bb16bf89": {
           "type": "block_menu",
           "settings": {
@@ -123,6 +142,7 @@
       "block_order": [
         "d0971828-5920-45a8-bdfc-06f185955162",
         "f8be6a4f-de44-4752-b680-71b79285239b",
+        "block_menu_FyW6jF",
         "aaf933ac-3238-4880-a8cd-d0b1bb16bf89",
         "f5667244-e2c9-4448-a2fc-3fd5ba76801b",
         "9490dcbe-51ad-44a0-9349-22b8725b47c6"
