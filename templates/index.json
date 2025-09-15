@@ -721,21 +721,21 @@
           "type": "tabitem",
           "settings": {
             "tab_title": "Beds",
-            "collection_handle": "dogs"
+            "collection_handle": "new-arrivals"
           }
         },
         "21510852-1727-4e0a-a49b-f6f77212f4c5": {
           "type": "tabitem",
           "settings": {
             "tab_title": "Clothing",
-            "collection_handle": "cats"
+            "collection_handle": "new-arrivals"
           }
         },
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-2": {
           "type": "tabitem",
           "settings": {
-            "tab_title": "Beds & Blankets",
-            "collection_handle": "beds-blankets"
+            "tab_title": "Toys",
+            "collection_handle": "new-arrivals"
           }
         },
         "ebaacd6e-ebf0-468f-a75e-6d19875a44b3": {
