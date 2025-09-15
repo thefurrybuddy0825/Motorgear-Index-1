@@ -483,7 +483,7 @@
         "c_nbprogress_2": "#ffffff",
         "c_progress_1": "#ffffff",
         "c_progress_2": "#ffa500",
-        "animate": false,
+        "animate": true,
         "class": "",
         "distance_top_xl": 0,
         "distance_top_md": 0,
