@@ -386,7 +386,7 @@
           {% for block in section.blocks %}
             {% assign bst = block.settings %}
             {% if block.type == 'image' %}
-              <div class="item 1">
+              <div class="item">
                 <div class="slide-image">
                   {% assign img_url = bst.image %}
                   {%- if block.settings.image != blank -%}
