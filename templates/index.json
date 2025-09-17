@@ -717,6 +717,14 @@
             "collection_handle": "new-arrivals"
           }
         },
+        "ebaacd6e-ebf0-468f-a75e-6d19875a44b3": {
+          "type": "tabitem",
+          "name": "Bowls",
+          "settings": {
+            "tab_title": "Bowls",
+            "collection_handle": "bowls"
+          }
+        },
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-3": {
           "type": "tabitem",
           "settings": {
@@ -738,13 +746,6 @@
             "collection_handle": "new-arrivals"
           }
         },
-        "ebaacd6e-ebf0-468f-a75e-6d19875a44b3": {
-          "type": "tabitem",
-          "settings": {
-            "tab_title": "Bowls",
-            "collection_handle": "new-arrivals"
-          }
-        },
         "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3": {
           "type": "tabitem",
           "settings": {
@@ -762,10 +763,10 @@
       },
       "block_order": [
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-1",
+        "ebaacd6e-ebf0-468f-a75e-6d19875a44b3",
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-3",
         "21510852-1727-4e0a-a49b-f6f77212f4c5",
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-2",
-        "ebaacd6e-ebf0-468f-a75e-6d19875a44b3",
         "a2bbc56d-77f7-4ab9-bda3-a386e645e5d3",
         "e03de2c8-509e-44a5-8a9b-76262ac9cb48"
       ],
