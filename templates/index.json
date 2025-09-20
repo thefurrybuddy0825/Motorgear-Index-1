@@ -736,7 +736,7 @@
           "type": "tabitem",
           "settings": {
             "tab_title": "Clothing",
-            "collection_handle": "new-arrivals"
+            "collection_handle": "clothing"
           }
         },
         "template--16985813745883__10923612-79e1-49d7-b0f3-69fe7c0df00c-tabitem-2": {
