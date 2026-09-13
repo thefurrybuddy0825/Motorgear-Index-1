@@ -2,10 +2,34 @@
 	{%- for i in (1..20) -%}
 		{%- assign img_colorId = 'img_color' | append: i -%}
 		{%- assign colorId = 'color' | append: i -%}
-	  	{%- if settings.[img_colorId] != blank -%}
-	  	.variant-color-{{ settings.[colorId] | downcase | handle }} {background-image: url("{{ settings.[img_colorId] | img_url: '70x' }}") !important}
-	  	.variant-color .variant-color-{{ settings.[colorId] | downcase | handle }} {box-shadow: 0 0 0 1px #d0d0d0 inset}
-	  	.item-swatch .variant-color-{{ settings.[colorId] | downcase | handle }}, .facet-color .variant-color-{{ settings.[colorId] | downcase | handle }} {border: 1px solid #d1d1d1 !important}
+	  	{%- if settings[img_colorId] != blank -%}
+	  	.variant-color-{{ settings[colorId] | downcase | handle }} {background-image: url("{{ settings[img_colorId] | img_url: '70x' }}") !important}
+	  	.variant-color .variant-color-{{ settings[colorId] | downcase | handle }} {box-shadow: 0 0 0 1px #d0d0d0 inset}
+	  	.item-swatch .variant-color-{{ settings[colorId] | downcase | handle }}, .facet-color .variant-color-{{ settings[colorId] | downcase | handle }} {border: 1px solid #d1d1d1 !important}
 	  	{%- endif %}
 	{%- endfor -%}
-</style>
+</style>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- if settings.[img_colorId] != blank -%}"
+  to: "{%- if settings[img_colorId] != blank -%}"
+  position: 140..181
+- from: "{{ settings.[colorId] | downcase | handle }}"
+  to: "{{ settings[colorId] | downcase | handle }}"
+  position: 201..244
+- from: "{{ settings.[img_colorId] | img_url: '70x' }}"
+  to: "{{ settings[img_colorId] | img_url: '70x' }}"
+  position: 269..313
+- from: "{{ settings.[colorId] | downcase | handle }}"
+  to: "{{ settings[colorId] | downcase | handle }}"
+  position: 362..405
+- from: "{{ settings.[colorId] | downcase | handle }}"
+  to: "{{ settings[colorId] | downcase | handle }}"
+  position: 476..519
+- from: "{{ settings.[colorId] | downcase | handle }}"
+  to: "{{ settings[colorId] | downcase | handle }}"
+  position: 549..592
+{%- endcomment -%}

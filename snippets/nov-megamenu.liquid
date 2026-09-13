@@ -20,10 +20,10 @@
           {% for i in (1..5) %}
             {%- assign name_collecId = 'name_collec_' | append: i -%}
             {%- assign linkId = 'link' | append: i -%}
-            {% if [name_collecId] != blank %}
+            {% if self[name_collecId] != blank %}
               <div class="nav--collec-item">
-                <a href="{{ [linkId] }}">
-                  <span>{{ [name_collecId] }}</span>
+                <a href="{{ self[linkId] }}">
+                  <span>{{ self[name_collecId] }}</span>
                   <i class="zmdi zmdi-chevron-right"></i>
                 </a>
               </div>
@@ -187,3 +187,19 @@
     </div>
   </div>
 </li>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if [name_collecId] != blank %}"
+  to: "{% if self[name_collecId] != blank %}"
+  position: 1204..1241
+- from: "{{ [linkId] }}"
+  to: "{{ self[linkId] }}"
+  position: 1312..1330
+- from: "{{ [name_collecId] }}"
+  to: "{{ self[name_collecId] }}"
+  position: 1357..1382
+{% endcomment %}
